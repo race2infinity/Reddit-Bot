@@ -12,7 +12,7 @@ In this repo, I'll be making a dictionary bot which gives the meaning of particu
 1. Clone or Download the repository
 ```
   $ git clone https://github.com/kylelobo/Reddit-Bot
-  $ cd Reddit-Bot
+  $ cd Reddit-Bot/Wordbook_Bot
 ```
 2. Install Dependencies
 ```
