@@ -1,0 +1,5 @@
+oauthlib==1.0.3
+praw==6.0.0
+prawcore==1.0.0
+requests==2.18.4
+virtualenv==15.1.0
