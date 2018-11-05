@@ -1,6 +1,6 @@
 # Reddit Bot
 This repo will teach you how to make a Reddit Bot using the [PRAW (The Python Reddit API Wrapper)](https://praw.readthedocs.io/en/latest/) Python package. <br>
-In this repo, I'll be making a dictionary bot which gives you the meaning of particular word/phrase in the English language.
+In this repo, I'll be making a dictionary bot which gives the meaning of particular word/phrase in the English language.
 
 # Index
 + [Installation](#installation)
