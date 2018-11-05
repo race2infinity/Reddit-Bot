@@ -3,9 +3,9 @@ import time
 import os
 import requests
 import json
-import credentials
 import bot_login
 import get_saved_comments
+import credentials
 
 def reply_to_comment(comment, comment_reply):
     comment.reply(comment_reply)
@@ -13,10 +13,11 @@ def reply_to_comment(comment, comment_reply):
     comments_replied_to.append(comment.id)
 
 def run_bot(r, comments_replied_to):
-    comment_limit = 10
-    print ("Fetching first", comment_limit, "comments..\n")
+    # Use this if you want to have a limit on the number of comments you want to read
+    # comment_limit = 100
+    # print ("Fetching first", comment_limit, "comments..\n")
 
-    for comment in r.subreddit('test').comments(limit = comment_limit):
+    for comment in r.subreddit('all').stream.comments():
         try:
             if ("!dict" in comment.body.lower() and comment.id not in comments_replied_to and comment.author != r.user.me()):
                 print ("Found comment with string \"!Dict\"\a")
@@ -71,7 +72,7 @@ def run_bot(r, comments_replied_to):
                         source = "https://en.oxforddictionaries.com/definition/" + word_id.replace(" ", "_")
                         comment_reply += "\n\n\n\n**Source:** " + source
 
-                    comment_reply += "\n\n\n\n***\n\n*Beep bop. I am a bot. Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)*"
+                    comment_reply += "\n\n\n\n***\n\n*Beep bop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).*\n\n*Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)*"
 
                     reply_to_comment(comment, comment_reply)
 
@@ -117,7 +118,7 @@ def run_bot(r, comments_replied_to):
                             source = "https://www.urbandictionary.com/define.php?term=" + word_id.replace(" ", "%20")
                             comment_reply += "\n\n\n\n**Source:** " + source
 
-                        comment_reply += "\n\n\n\n***\n\n*Beep bop. I am a bot. Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)*"
+                        comment_reply += "\n\n\n\n***\n\n*Beep bop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).*\n\n*Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)*"
 
                         reply_to_comment(comment, comment_reply)
 
@@ -142,16 +143,15 @@ def run_bot(r, comments_replied_to):
                     time_remaining = 600
 
             print (str(e.__class__.__name__) + ": " + str(e))
-            for i in range(time_remaining, 0, -1):
-                time.sleep(1)
+            for i in range(time_remaining, 0, -10):
                 print ("Retrying in", i, "seconds..")
+                time.sleep(10)
 
     else:
-        for i in range(5, 0, -1):
-            time.sleep(1)
+        for i in range(10, 0, -10):
             print ("Couldn't find a comment. Checking again in", i, "secs..")
-        print("")
-
+            time.sleep(10)
+        print ("")
 
 if __name__ == "__main__":
     r = bot_login.bot_login()
