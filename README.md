@@ -134,6 +134,10 @@ Everything the bot prints (including stacktraces when it crashes) goes to the He
 ```
 heroku logs
 ```
+However, this only shows about 100 lines. In order to view the logs in real time, use the command:
+```
+heroku logs -t
+```
 
 ## How to use the Bot<a name="how_to_use_the_application"></a>
 !dict word <br>
