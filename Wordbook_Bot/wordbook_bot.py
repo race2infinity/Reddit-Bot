@@ -4,28 +4,27 @@ import os
 import requests
 import json
 import bot_login
-import get_saved_comments
-import credentials
 
-def reply_to_comment(comment, comment_reply):
+def reply_to_comment(comment, comment_reply, dictionary_type):
     comment.reply(comment_reply)
-    print ("Replied to comment \"" + comment.body + "\"\n")
-    comments_replied_to.append(comment.id)
+    print ("\nReply details:\nDictionary: " + dictionary_type + "\nSubreddit: r/" + str(comment.subreddit) + "\nComment: \"" + comment.body + "\"\n" + "User: u/" + str(comment.author) + "\a")
+    comment.save()
 
-def run_bot(r, comments_replied_to):
-    # Use this if you want to have a limit on the number of comments you want to read
+def run_bot(r):
+    # Uncomment this if you want to have a limit on the number of comments you want to read
     # comment_limit = 100
     # print ("Fetching first", comment_limit, "comments..\n")
-
+    print ("\nFetching comments:")
     for comment in r.subreddit('all').stream.comments():
         try:
-            if ("!dict" in comment.body.lower() and comment.id not in comments_replied_to and comment.author != r.user.me()):
-                print ("Found comment with string \"!Dict\"\a")
+            if ("!dict" in comment.body.lower() and not comment.saved and comment.author != r.user.me()):
+
+                print ("\n\nFound a comment!")
 
                 comment_string = list(comment.body.split())[1:]
 
-                app_id = credentials.app_id
-                app_key = credentials.app_key
+                app_id = os.environ['app_id']
+                app_key = os.environ['app_key']
                 language = "en"
                 word_id = " ".join(str(i) for i in comment_string)
 
@@ -34,7 +33,8 @@ def run_bot(r, comments_replied_to):
 
                 # Oxford Dictionary
                 if (req.status_code == 200):
-                    print("Oxford- Data accessed sucessfully!")
+
+                    dictionary_type = "Oxford"
 
                     with open("data.json", "w+") as f:
                         json.dump(req.json(), f, sort_keys = True, ensure_ascii = False, indent = 4)
@@ -72,12 +72,9 @@ def run_bot(r, comments_replied_to):
                         source = "https://en.oxforddictionaries.com/definition/" + word_id.replace(" ", "_")
                         comment_reply += "\n\n\n\n**Source:** " + source
 
-                    comment_reply += "\n\n\n\n***\n\n*Beep bop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).*\n\n*Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)*"
+                    comment_reply += "\n\n\n\n***\n\n*^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)*\n\n*^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))*"
 
-                    reply_to_comment(comment, comment_reply)
-
-                    with open (os.getcwd() + "/comments_replied_to.txt", "a+") as f:
-                        f.write(comment.id + " ")
+                    reply_to_comment(comment, comment_reply, dictionary_type)
 
                 # Urban Dictionary
                 else:
@@ -85,7 +82,7 @@ def run_bot(r, comments_replied_to):
                     req = requests.get(url)
                     if (req.status_code == 200):
 
-                        print ("Urban- Data accessed succesfully!")
+                        dictionary_type = "Urban"
 
                         with open("data.json", "w+") as f:
                             json.dump(req.json(), f, sort_keys = True, ensure_ascii = False, indent = 4)
@@ -97,6 +94,7 @@ def run_bot(r, comments_replied_to):
 
                         if(len(data["list"]) == 0):
                             comment_reply += "\n\nSorry, Such a word does not exist!"
+                            dictionary_type = "None"
 
                         try:
                             definition = data["list"][0]["definition"].replace("[", "").replace("]", "")
@@ -118,17 +116,15 @@ def run_bot(r, comments_replied_to):
                             source = "https://www.urbandictionary.com/define.php?term=" + word_id.replace(" ", "%20")
                             comment_reply += "\n\n\n\n**Source:** " + source
 
-                        comment_reply += "\n\n\n\n***\n\n*Beep bop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).*\n\n*Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)*"
+                        comment_reply += "\n\n\n\n***\n\n*^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)*\n\n*^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))*"
 
-                        reply_to_comment(comment, comment_reply)
-
-                        with open (os.getcwd() + "/comments_replied_to.txt", "a+") as f:
-                            f.write(comment.id + " ")
+                        reply_to_comment(comment, comment_reply, dictionary_type)
 
                     # Word doesn't exist
                     else:
                         comment_reply = "Sorry, Such a word does not exist!"
-                        reply_to_comment(comment, comment_reply)
+                        dictionary_type = "None"
+                        reply_to_comment(comment, comment_reply, dictionary_type)
 
         # Prolly low karma so can't comment as frequently
         except Exception as e:
@@ -147,16 +143,15 @@ def run_bot(r, comments_replied_to):
                 print ("Retrying in", i, "seconds..")
                 time.sleep(10)
 
-    else:
-        for i in range(10, 0, -10):
-            print ("Couldn't find a comment. Checking again in", i, "secs..")
-            time.sleep(10)
-        print ("")
+    # Uncomment this if you want to have a limit on the number of comments you want to read
+    # else:
+    #     for i in range(10, 0, -10):
+    #         print ("Couldn't find a comment. Checking again in", i, "secs..")
+    #         time.sleep(10)
+    #     print ("")
 
 if __name__ == "__main__":
     r = bot_login.bot_login()
-    comments_replied_to = get_saved_comments.get_saved_comments()
-    print ("List of comment IDs", comments_replied_to, "\n")
 
     while True:
-        run_bot(r, comments_replied_to)
+        run_bot(r)
