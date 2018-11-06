@@ -126,8 +126,22 @@ r = praw.Reddit(username = os.environ['reddit_username'],
                 client_secret = os.environ['client_secret'],
                 user_agent = "kyle")
 ```
+At this point, your bot is not yet running. You still need to ```log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```
+
+### Viewing the output
+Everything the bot prints (including stacktraces when it crashes) goes to the Heroku log, which you can view with this command:
+```
+heroku logs
+```
 
 ## How to use the Bot<a name="how_to_use_the_application"></a>
 !dict word <br>
 <i>or</i> <br>
 !Dict word
+
+
+#### References / Resources:
+https://www.youtube.com/watch?v=krTUf7BpTc0<br>
+https://gist.github.com/hzsweers/8595628<br>
+https://devcenter.heroku.com/articles/git<br>
+http://amertune.blogspot.com/2014/04/tutorial-create-reddit-bot-with-python.html
