@@ -11,7 +11,7 @@ In this repo, I have made a dictionary bot which gives the meaning of particular
 ### Running Locally
 1. Clone or Download the repository
 ```
-$ git clone https://github.com/kylelobo/Reddit-Bot
+$ git clone https://github.com/kylelobo/Reddit-Bot.git
 $ cd Reddit-Bot/Wordbook_Bot
 ```
 2. Install Dependencies
