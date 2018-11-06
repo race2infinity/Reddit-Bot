@@ -1,5 +1,5 @@
 # Reddit Bot
-This repo will teach you how to make a Reddit Bot using the [PRAW](https://praw.readthedocs.io/en/latest/) (The Python Reddit API Wrapper) Python package. <br>
+This repo teaches you how to make a Reddit Bot using the [PRAW](https://praw.readthedocs.io/en/latest/) (The Python Reddit API Wrapper) Python package. <br>
 In this repo, I'll be making a dictionary bot which gives the meaning of particular word/phrase in the English language.
 
 # Index
@@ -30,7 +30,7 @@ Your bot should now be running.
 
 ### Deploying the Bot on Heroku (Platform that allows you to host your bot)<a name="deploying_the_bot"></a>
 Firstly, make an account on [Heroku](https://www.heroku.com/) <br><br>
-Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. In your main directory, create two files: "requirements.txt" and "runtime.txt".<br> The requirements.txt file should contain output of the command "pip freeze > requirements.txt". If you're not using virtualenv, you'll have to go and delete all the lines with packages your code doesn't use.<br> Runtime.txt just specifies which python version for Heroku to use. Mine just has the line "python-3.6.6" in it. <br><br>
+Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. In your main directory, create two files: "requirements.txt" and "runtime.txt".<br> The requirements.txt file should contain output of the command "pip freeze > requirements.txt". If you're not using virtualenv, you'll have delete all the lines with packages your code doesn't use.<br> Runtime.txt just specifies which python version for Heroku to use. Mine just has the line "python-3.6.6" in it. <br><br>
 Now it's time to set up your git repo to use it as a remote.
 ### Installing Git
 ```
@@ -55,7 +55,7 @@ Authentication successful.
 ```
 ### Initializing a local Git repository
 ```
-# Change your directory to you base directory
+# Change your directory to your base directory
 $ cd myapp
 $ git init
 Initialized empty Git repository in .git/
@@ -113,6 +113,8 @@ To solve 1), you'll have to set environmental variables. You can set it like thi
 # Set heroku config/env variables
 $ heroku config:set reddit_username=<username>
 $ heroku config:set reddit_password=<password>
+$ heroku config:set client_id=<client_id>
+$ heroku config:set client_secret=<client_secret>
 
 # Confirm they're set with this command
 $ heroku config
@@ -120,11 +122,10 @@ $ heroku config
 And programmatically retrieve it in your code like this:
 ```
 # Retrieve heroku env variables
-r = praw.Reddit(username = os.environ['reddit_username'],
-                password = os.environ['reddit_password'],
-                client_id = os.environ['client_id'],
-                client_secret = os.environ['client_secret'],
-                user_agent = "kyle")
+username = os.environ['reddit_username']
+password = os.environ['reddit_password']
+client_id = os.environ['client_id']
+client_secret = os.environ['client_secret']
 ```
 At this point, your bot is not yet running. You still need to ```log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```
 
@@ -140,7 +141,7 @@ heroku logs
 !Dict word
 
 
-#### References / Resources:
+#### References:
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
 https://gist.github.com/hzsweers/8595628<br>
 https://devcenter.heroku.com/articles/git<br>
