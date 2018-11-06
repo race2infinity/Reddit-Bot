@@ -106,7 +106,7 @@ $ git push heroku testbranch:master
 ### After setting up repo on Heroku
 Once you've got your repo set up on Heroku, there's two things you'll have to change:<br>
 1. Can't use a prop (credentials) file for username/password anymore since it's untracked in your gitignore, so you'll have to set environmental variables.<br>
-2. Heroku has its own weird FS, and you can't preserve generated files between runs (AKA pickle caching isn't an option).<br>
+2. Heroku has it's own weird File System, and you can't preserve generated files between runs (AKA pickle caching isn't an option).<br>
 
 To solve 1), you'll have to set environmental variables. You can set it like this from terminal:
 ```
