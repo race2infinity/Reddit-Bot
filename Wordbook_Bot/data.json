@@ -1,134 +1,536 @@
 {
-    "list": [
+    "metadata": {
+        "provider": "Oxford University Press"
+    },
+    "results": [
         {
-            "author": "Truckdriver",
-            "current_vote": "",
-            "defid": 3899541,
-            "definition": "verb\r\n\r\nHaving a [valid] [submission] [to Urban] Dictionary rejected.\r\n\r\n",
-            "example": "Although [Walt's] term was [valid] and his definition was accurate, he still [got dict] by the Urban Dictionary.",
-            "permalink": "http://dict.urbanup.com/3899541",
-            "sound_urls": [],
-            "thumbs_down": 66,
-            "thumbs_up": 1211,
-            "word": "dict",
-            "written_on": "2009-04-19T00:00:00.000Z"
-        },
-        {
-            "author": "P.a.a.",
-            "current_vote": "",
-            "defid": 1664435,
-            "definition": "Outside poker [jargon], a more general expression indicating utter, complete, and oftentimes humiliating [domination]. Similar to [pwnd] or owned\r\n",
-            "example": "Man, [I just] got dic't by that [physics] [test].\r\n",
-            "permalink": "http://dict.urbanup.com/1664435",
-            "sound_urls": [],
-            "thumbs_down": 17,
-            "thumbs_up": 42,
-            "word": "dic't",
-            "written_on": "2006-03-19T00:00:00.000Z"
-        },
-        {
-            "author": "highway 6",
-            "current_vote": "",
-            "defid": 1253968,
-            "definition": "When in the game of poker, [you lose] [the hand] despite the opponent being [the underdog].",
-            "example": "When you hold AK and the opponent holds [A2], [the flop] comes A 9 4, [the turn] a J, then the river a 2. This means you got dic't on the river.",
-            "permalink": "http://dict.urbanup.com/1253968",
-            "sound_urls": [],
-            "thumbs_down": 26,
-            "thumbs_up": 51,
-            "word": "dic't",
-            "written_on": "2005-05-12T00:00:00.000Z"
-        },
-        {
-            "author": "girlacrossthesea",
-            "current_vote": "",
-            "defid": 1456051,
-            "definition": "[short] for [dictionary] \r\n\r\n",
-            "example": "i looked up the [meaning] of [highfalutin] in [the dict].",
-            "permalink": "http://dict.urbanup.com/1456051",
-            "sound_urls": [],
-            "thumbs_down": 35,
-            "thumbs_up": 26,
-            "word": "dict",
-            "written_on": "2005-09-25T00:00:00.000Z"
-        },
-        {
-            "author": "puer",
-            "current_vote": "",
-            "defid": 4280031,
-            "definition": "the [Latin] [root] in words in the english language that means speech, or talking, as it comes from the [latin] verb dictare, which means to say, or to speak, and the latin verb dicere, which means the same thing.",
-            "example": "the latin root 'dict' is where we get words such as:\n\n[diction] - (n) speech, someone's ability to speak\n\n[predict] - literally ['to] say beforehand'\n\netc.",
-            "permalink": "http://dict.urbanup.com/4280031",
-            "sound_urls": [],
-            "thumbs_down": 20,
-            "thumbs_up": 16,
-            "word": "dict",
-            "written_on": "2009-10-06T00:00:00.000Z"
-        },
-        {
-            "author": "AllyUrbanDict",
-            "current_vote": "",
-            "defid": 2617819,
-            "definition": "1) How Urban Dictionary is fondly known between frequent [visitors] of the site.\r\n\r\n2) All you need bother to type into google to find Urban Dictionary.\r\n\r\n3) A way of finding out what ridiculous words you've never heard before mean within the online community, so they can be transferred into one's very own real, or indeed virtual conversations, [to make one] appear [down with the kids].",
-            "example": "1) Alex - \"You so stole [that word] from me!\"\r\n   [Yash] - \"No way! i got it from [urban Dict]!\"\r\n   Alex - \"yeh me too... ¬_¬\"\r\n\r\n2) \"search=[Urban Dict]\"\r\n\r\n3) \"What the HELL does that mean???\"\r\n   \"ugh, Urban Dict it idiot ¬_¬\"",
-            "permalink": "http://urban-dict.urbanup.com/2617819",
-            "sound_urls": [],
-            "thumbs_down": 28,
-            "thumbs_up": 67,
-            "word": "Urban Dict",
-            "written_on": "2007-10-05T00:00:00.000Z"
-        },
-        {
-            "author": "JerZor",
-            "current_vote": "",
-            "defid": 1547151,
-            "definition": "(v.) To add [en] entry [to Urban] [Diction].",
-            "example": "[That word's] [freakin'] [brilliant]! You should totally Urban Dict that shit!",
-            "permalink": "http://urban-dict.urbanup.com/1547151",
-            "sound_urls": [],
-            "thumbs_down": 35,
-            "thumbs_up": 40,
-            "word": "Urban Dict",
-            "written_on": "2005-12-09T00:00:00.000Z"
-        },
-        {
-            "author": "Willum",
-            "current_vote": "",
-            "defid": 1951636,
-            "definition": "[Automated] [gameplay]. Generally by using programs to [play games] for you.",
-            "example": "Bob: What's up?\r\nMe: [Botting] for [D2], [hold on].",
-            "permalink": "http://botting.urbanup.com/1951636",
-            "sound_urls": [],
-            "thumbs_down": 74,
-            "thumbs_up": 392,
-            "word": "botting",
-            "written_on": "2006-09-01T00:00:00.000Z"
-        },
-        {
-            "author": "zee.mee",
-            "current_vote": "",
-            "defid": 3856936,
-            "definition": "Austrialian slang for [bottom], [ass] or a person you [refer] as ass.",
-            "example": "Those [young] bot-bots [make me] [mad]!",
-            "permalink": "http://bot-bot.urbanup.com/3856936",
-            "sound_urls": [],
-            "thumbs_down": 14,
-            "thumbs_up": 103,
-            "word": "bot-bot",
-            "written_on": "2009-04-03T00:00:00.000Z"
-        },
-        {
-            "author": "LFReD",
-            "current_vote": "",
-            "defid": 4888889,
-            "definition": "[Abbreviation]: [Robots]",
-            "example": "[Battle] Bots, [Swarm] Bots",
-            "permalink": "http://bots.urbanup.com/4888889",
-            "sound_urls": [],
-            "thumbs_down": 48,
-            "thumbs_up": 130,
-            "word": "Bots",
-            "written_on": "2010-04-15T00:00:00.000Z"
+            "id": "trap",
+            "language": "en",
+            "lexicalEntries": [
+                {
+                    "derivatives": [
+                        {
+                            "id": "traplike",
+                            "text": "traplike"
+                        }
+                    ],
+                    "entries": [
+                        {
+                            "etymologies": [
+                                "Old English træppe (in coltetræppe ‘Christ's thorn’); related to Middle Dutch trappe and medieval Latin trappa, of uncertain origin. The verb dates from late Middle English"
+                            ],
+                            "grammaticalFeatures": [
+                                {
+                                    "text": "Singular",
+                                    "type": "Number"
+                                }
+                            ],
+                            "homographNumber": "100",
+                            "senses": [
+                                {
+                                    "definitions": [
+                                        "a device or enclosure designed to catch and retain animals, typically by allowing entry but not exit or by catching hold of a part of the body"
+                                    ],
+                                    "domains": [
+                                        "Hunting"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "the squirrels ravaged the saplings, despite the baited traps"
+                                        },
+                                        {
+                                            "text": "a bear trap"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.008",
+                                    "short_definitions": [
+                                        "device designed to catch and retain animals"
+                                    ],
+                                    "subsenses": [
+                                        {
+                                            "definitions": [
+                                                "the compartment from which a greyhound is released at the start of a race."
+                                            ],
+                                            "domains": [
+                                                "Sport"
+                                            ],
+                                            "id": "m_en_gbus1070580.011",
+                                            "short_definitions": [
+                                                "compartment from which greyhound is released"
+                                            ]
+                                        }
+                                    ],
+                                    "thesaurusLinks": [
+                                        {
+                                            "entry_id": "trap",
+                                            "sense_id": "t_en_gb0015107.003"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "a situation in which people lie in wait to make a surprise attack"
+                                    ],
+                                    "domains": [
+                                        "Military"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "we were fed false information by a double agent and walked straight into a trap"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.013",
+                                    "short_definitions": [
+                                        "situation in which people lie in wait to make attack"
+                                    ],
+                                    "subsenses": [
+                                        {
+                                            "definitions": [
+                                                "a trick by which someone is misled into acting contrary to their interests or intentions"
+                                            ],
+                                            "examples": [
+                                                {
+                                                    "text": "by keeping quiet I was walking into a trap"
+                                                }
+                                            ],
+                                            "id": "m_en_gbus1070580.014",
+                                            "short_definitions": [
+                                                "trick by which someone is misled into acting"
+                                            ],
+                                            "thesaurusLinks": [
+                                                {
+                                                    "entry_id": "trap",
+                                                    "sense_id": "t_en_gb0015107.001"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "definitions": [
+                                                "an unpleasant situation from which it is hard to escape"
+                                            ],
+                                            "examples": [
+                                                {
+                                                    "text": "they fell into the trap of relying too little on equity finance"
+                                                }
+                                            ],
+                                            "id": "m_en_gbus1070580.015",
+                                            "short_definitions": [
+                                                "unpleasant situation that is hard to escape"
+                                            ],
+                                            "thesaurusLinks": [
+                                                {
+                                                    "entry_id": "trap",
+                                                    "sense_id": "t_en_gb0015107.003"
+                                                },
+                                                {
+                                                    "entry_id": "trap",
+                                                    "sense_id": "t_en_gb0015107.002"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "thesaurusLinks": [
+                                        {
+                                            "entry_id": "trap",
+                                            "sense_id": "t_en_gb0015107.002"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "a container or device used to collect something, or a place where something collects"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "one fuel filter and water trap are sufficient on the fuel system"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.017",
+                                    "notes": [
+                                        {
+                                            "text": "with modifier",
+                                            "type": "grammaticalNote"
+                                        }
+                                    ],
+                                    "short_definitions": [
+                                        "container or device used to collect something"
+                                    ],
+                                    "subsenses": [
+                                        {
+                                            "definitions": [
+                                                "a curve in the waste pipe from a bath, basin, or toilet that is always full of liquid and prevents gases from coming up the pipe into the building."
+                                            ],
+                                            "domains": [
+                                                "Plumbing"
+                                            ],
+                                            "id": "m_en_gbus1070580.018",
+                                            "short_definitions": [
+                                                "curve in waste pipe"
+                                            ]
+                                        },
+                                        {
+                                            "definitions": [
+                                                "a bunker or other hollow on a golf course."
+                                            ],
+                                            "domains": [
+                                                "Golf"
+                                            ],
+                                            "id": "m_en_gbus1070580.019",
+                                            "short_definitions": [
+                                                "bunker on golf course"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "a light, two-wheeled carriage pulled by a horse or pony."
+                                    ],
+                                    "id": "m_en_gbus1070580.021",
+                                    "short_definitions": [
+                                        "carriage pulled by horse or pony"
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "a device for hurling an object such as a clay pigeon into the air to be shot at."
+                                    ],
+                                    "domains": [
+                                        "Sport"
+                                    ],
+                                    "id": "m_en_gbus1070580.023",
+                                    "short_definitions": [
+                                        "device for hurling object into air"
+                                    ],
+                                    "subsenses": [
+                                        {
+                                            "definitions": [
+                                                "(in the game of trapball) the shoe-shaped device that is hit with a bat to send the ball into the air."
+                                            ],
+                                            "domains": [
+                                                "Sport"
+                                            ],
+                                            "id": "m_en_gbus1070580.024",
+                                            "registers": [
+                                                "historical"
+                                            ],
+                                            "short_definitions": [
+                                                "device hit with bat to send ball into air"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "crossReferenceMarkers": [
+                                        "short for trapdoor"
+                                    ],
+                                    "crossReferences": [
+                                        {
+                                            "id": "trapdoor",
+                                            "text": "trapdoor",
+                                            "type": "abbreviation"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.026"
+                                },
+                                {
+                                    "definitions": [
+                                        "a person's mouth (used in expressions to do with speaking)"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "keep your trap shut!"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.028",
+                                    "registers": [
+                                        "informal"
+                                    ],
+                                    "short_definitions": [
+                                        "person's mouth"
+                                    ],
+                                    "thesaurusLinks": [
+                                        {
+                                            "entry_id": "trap",
+                                            "sense_id": "t_en_gb0015107.004"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "(among jazz musicians) drums or percussion instruments"
+                                    ],
+                                    "domains": [
+                                        "Jazz",
+                                        "Instrument"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "I played the traps a little myself once"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.030",
+                                    "notes": [
+                                        {
+                                            "text": "\"traps\"",
+                                            "type": "wordFormNote"
+                                        }
+                                    ],
+                                    "registers": [
+                                        "informal"
+                                    ],
+                                    "short_definitions": [
+                                        "(among jazz musicians) drums"
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "a place where drugs are sold"
+                                    ],
+                                    "domains": [
+                                        "Narcotics"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "a trap full of dealers"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.033",
+                                    "regions": [
+                                        "US"
+                                    ],
+                                    "registers": [
+                                        "informal"
+                                    ],
+                                    "short_definitions": [
+                                        "place where drugs are sold"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "etymologies": [
+                                "late 18th century: from Swedish trapp, from trappa ‘stair’ (because of the often stair-like appearance of its outcroppings)"
+                            ],
+                            "grammaticalFeatures": [
+                                {
+                                    "text": "Mass",
+                                    "type": "Countability"
+                                },
+                                {
+                                    "text": "Singular",
+                                    "type": "Number"
+                                }
+                            ],
+                            "homographNumber": "300",
+                            "senses": [
+                                {
+                                    "definitions": [
+                                        "basalt or a similar dark, fine-grained igneous rock."
+                                    ],
+                                    "domains": [
+                                        "Rock"
+                                    ],
+                                    "id": "m_en_gbus1070600.007",
+                                    "regions": [
+                                        "North American"
+                                    ],
+                                    "short_definitions": [
+                                        "basalt or similar dark, fine-grained igneous rock"
+                                    ]
+                                }
+                            ],
+                            "variantForms": [
+                                {
+                                    "text": "traprock"
+                                }
+                            ]
+                        }
+                    ],
+                    "language": "en",
+                    "lexicalCategory": "Noun",
+                    "pronunciations": [
+                        {
+                            "audioFile": "http://audio.oxforddictionaries.com/en/mp3/trap_gb_1.mp3",
+                            "dialects": [
+                                "British English"
+                            ],
+                            "phoneticNotation": "IPA",
+                            "phoneticSpelling": "trap"
+                        }
+                    ],
+                    "text": "trap"
+                },
+                {
+                    "derivatives": [
+                        {
+                            "id": "traplike",
+                            "text": "traplike"
+                        }
+                    ],
+                    "entries": [
+                        {
+                            "grammaticalFeatures": [
+                                {
+                                    "text": "Transitive",
+                                    "type": "Subcategorization"
+                                },
+                                {
+                                    "text": "Present",
+                                    "type": "Tense"
+                                }
+                            ],
+                            "homographNumber": "101",
+                            "senses": [
+                                {
+                                    "definitions": [
+                                        "catch (an animal) in a trap."
+                                    ],
+                                    "id": "m_en_gbus1070580.038",
+                                    "short_definitions": [
+                                        "catch animal in trap"
+                                    ],
+                                    "subsenses": [
+                                        {
+                                            "definitions": [
+                                                "prevent (someone) from escaping from a place"
+                                            ],
+                                            "examples": [
+                                                {
+                                                    "text": "twenty workers were trapped by flames"
+                                                }
+                                            ],
+                                            "id": "m_en_gbus1070580.046",
+                                            "short_definitions": [
+                                                "prevent someone from escaping"
+                                            ]
+                                        },
+                                        {
+                                            "definitions": [
+                                                "have (something, typically a part of the body) held tightly by something so that it cannot be freed"
+                                            ],
+                                            "examples": [
+                                                {
+                                                    "text": "he had trapped his finger in a spring-loaded hinge"
+                                                }
+                                            ],
+                                            "id": "m_en_gbus1070580.047",
+                                            "short_definitions": [
+                                                "have something held tightly"
+                                            ],
+                                            "thesaurusLinks": [
+                                                {
+                                                    "entry_id": "trap",
+                                                    "sense_id": "t_en_gb0015107.007"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "definitions": [
+                                                "bring (the ball) under control with the foot or other part of the body on receiving it"
+                                            ],
+                                            "domains": [
+                                                "Soccer"
+                                            ],
+                                            "examples": [
+                                                {
+                                                    "text": "the ball bounced near Scott and he trapped it with his left foot"
+                                                }
+                                            ],
+                                            "id": "m_en_gbus1070580.048",
+                                            "short_definitions": [
+                                                "bring ball under control"
+                                            ]
+                                        }
+                                    ],
+                                    "thesaurusLinks": [
+                                        {
+                                            "entry_id": "trap",
+                                            "sense_id": "t_en_gb0015107.006"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "definitions": [
+                                        "trick or deceive (someone) into doing something contrary to their interests or intentions"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "I hoped to trap him into an admission"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070580.050",
+                                    "short_definitions": [
+                                        "trick or deceive someone"
+                                    ],
+                                    "thesaurusLinks": [
+                                        {
+                                            "entry_id": "trap",
+                                            "sense_id": "t_en_gb0015107.008"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "etymologies": [
+                                "late Middle English: from the obsolete noun trap ‘trappings’, from Old French drap ‘drape’"
+                            ],
+                            "grammaticalFeatures": [
+                                {
+                                    "text": "Transitive",
+                                    "type": "Subcategorization"
+                                },
+                                {
+                                    "text": "Present",
+                                    "type": "Tense"
+                                }
+                            ],
+                            "homographNumber": "200",
+                            "senses": [
+                                {
+                                    "definitions": [
+                                        "put trappings on (a horse)"
+                                    ],
+                                    "examples": [
+                                        {
+                                            "text": "gaily trapped mules"
+                                        }
+                                    ],
+                                    "id": "m_en_gbus1070590.007",
+                                    "notes": [
+                                        {
+                                            "text": "usually as adjective \"trapped\"",
+                                            "type": "wordFormNote"
+                                        }
+                                    ],
+                                    "registers": [
+                                        "archaic"
+                                    ],
+                                    "short_definitions": [
+                                        "put trappings on"
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "language": "en",
+                    "lexicalCategory": "Verb",
+                    "pronunciations": [
+                        {
+                            "audioFile": "http://audio.oxforddictionaries.com/en/mp3/trap_gb_1.mp3",
+                            "dialects": [
+                                "British English"
+                            ],
+                            "phoneticNotation": "IPA",
+                            "phoneticSpelling": "trap"
+                        }
+                    ],
+                    "text": "trap"
+                }
+            ],
+            "type": "headword",
+            "word": "trap"
         }
     ]
 }

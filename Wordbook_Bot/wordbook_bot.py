@@ -7,7 +7,9 @@ import bot_login
 
 def reply_to_comment(comment, comment_reply, dictionary_type):
     comment.reply(comment_reply)
-    print ("\nReply details:\nDictionary: " + dictionary_type + "\nSubreddit: r/" + str(comment.subreddit) + "\nComment: \"" + comment.body + "\"\n" + "User: u/" + str(comment.author) + "\a")
+
+    print ("\nReply details:\nDictionary: {}\nSubreddit: r/{}\nComment: \"{}\"\nUser: u/{}\a". format(dictionary_type, str(comment.subreddit), comment.body, str(comment.author)))
+
     comment.save()
 
 def run_bot(r):
@@ -18,13 +20,12 @@ def run_bot(r):
     for comment in r.subreddit('all').stream.comments():
         try:
             if ("!dict" in comment.body.lower() and not comment.saved and comment.author != r.user.me()):
-
                 print ("\n\nFound a comment!")
 
                 comment_string = list(comment.body.split())[1:]
 
-                app_id = os.environ['app_id']
-                app_key = os.environ['app_key']
+                app_id = os.environ["app_id"]
+                app_key = os.environ["app_key"]
                 language = "en"
                 word_id = " ".join(str(i) for i in comment_string)
 
@@ -33,7 +34,6 @@ def run_bot(r):
 
                 # Oxford Dictionary
                 if (req.status_code == 200):
-
                     dictionary_type = "Oxford"
 
                     with open("data.json", "w+") as f:
@@ -61,27 +61,19 @@ def run_bot(r):
 
                     if (len(lexicalCategory) > 0):
                         comment_reply += "\n\n\n\n**Part of speech:** \n\n*" + lexicalCategory + "*"
-
                     if (len(definition) > 0):
                         comment_reply += "\n\n\n\n**Definition:** \n\n" + definition
-
                     if (len(example) > 0):
                         comment_reply += "\n\n\n\n**Example:** \n\n" + example
-
                     if (len(definition) > 0):
                         source = "https://en.oxforddictionaries.com/definition/" + word_id.replace(" ", "_")
                         comment_reply += "\n\n\n\n**Source:** " + source
-
-                    comment_reply += "\n\n\n\n***\n\n*^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)*\n\n*^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))*"
-
-                    reply_to_comment(comment, comment_reply, dictionary_type)
 
                 # Urban Dictionary
                 else:
                     url = "http://api.urbandictionary.com/v0/define?term={" + word_id + "}"
                     req = requests.get(url)
                     if (req.status_code == 200):
-
                         dictionary_type = "Urban"
 
                         with open("data.json", "w+") as f:
@@ -93,7 +85,7 @@ def run_bot(r):
                         comment_reply = "\n\n>" + word_id
 
                         if(len(data["list"]) == 0):
-                            comment_reply += "\n\nSorry, Such a word does not exist!"
+                            comment_reply += "\n\nSorry, such a word does not exist!"
                             dictionary_type = "None"
 
                         try:
@@ -108,23 +100,20 @@ def run_bot(r):
 
                         if (len(definition) > 0):
                             comment_reply += "\n\n\n\n**Definition:** \n\n" + definition
-
                         if (len(example) > 0):
                             comment_reply += "\n\n\n\n**Example:** \n\n" + example
-
                         if (len(definition) > 0):
                             source = "https://www.urbandictionary.com/define.php?term=" + word_id.replace(" ", "%20")
                             comment_reply += "\n\n\n\n**Source:** " + source
 
-                        comment_reply += "\n\n\n\n***\n\n*^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)*\n\n*^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))*"
-
-                        reply_to_comment(comment, comment_reply, dictionary_type)
-
                     # Word doesn't exist
                     else:
-                        comment_reply = "Sorry, Such a word does not exist!"
+                        comment_reply = "\n\nSorry, such a word does not exist!"
                         dictionary_type = "None"
-                        reply_to_comment(comment, comment_reply, dictionary_type)
+
+                comment_reply += "\n\n\n\n***\n\n*^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)*\n\n*^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))*"
+
+                reply_to_comment(comment, comment_reply, dictionary_type)
 
         # Prolly low karma so can't comment as frequently
         except Exception as e:
@@ -133,10 +122,8 @@ def run_bot(r):
                     if (i.isdigit()):
                         time_remaining = int(i)
                         break
-                if (time_remaining <= 10):
+                if (not "seconds" or not "second" in str(e).split()):
                     time_remaining *= 60
-                else:
-                    time_remaining = 600
 
             print (str(e.__class__.__name__) + ": " + str(e))
             for i in range(time_remaining, 0, -10):
@@ -152,6 +139,5 @@ def run_bot(r):
 
 if __name__ == "__main__":
     r = bot_login.bot_login()
-
     while True:
         run_bot(r)
