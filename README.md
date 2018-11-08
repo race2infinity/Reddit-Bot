@@ -24,9 +24,9 @@ $ pip install requests --user
 ```
 #### Setting up Environment Variables
 An app’s environment-specific configuration should be stored in environment variables (not in the app’s source code). This lets you modify each environment’s configuration in isolation, and prevents secure credentials from being stored in version control.<br><br>
-<b>NOTE:<br>
+<b>Note:<br>
 Do not enter spaces before and after the "=" sign.<br>
-Enter your values without the quotes (" ")</b><br><br>
+Enter your values without the quotes (" ").</b><br><br>
 To set variable only for current shell:
 ```
 VARNAME="your value"
