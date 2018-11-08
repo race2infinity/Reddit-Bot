@@ -4,24 +4,67 @@ In this repo, I have made a dictionary bot which gives the meaning of particular
 
 # Index
 + [Installation](#installation)
-+ [Deploying the Bot on Heroku (Platform that allows you to host your bot)](#deploying_the_bot)
++ [Deploying the Bot on Heroku (Platform that allows you to host your Bot)](#deploying_the_bot)
 + [How to use the Bot](#how_to_use_the_application)
++ [References](#references)
 
 ## Installation<a name="installation"></a>
 ### Running Locally
-1. Clone or Download the repository
+#### Clone or Download the repository
 ```
 $ git clone https://github.com/kylelobo/Reddit-Bot.git
 $ cd Reddit-Bot/Wordbook_Bot
 ```
-2. Install Dependencies
+#### Install Dependencies
 ```
 $ sudo apt-get install python3.6
 $ sudo apt-get install pip
 $ pip install praw --user
 $ pip install requests --user
 ```
-3. Start the Bot
+#### Setting up Environment Variables
+An app’s environment-specific configuration should be stored in environment variables (not in the app’s source code). This lets you modify each environment’s configuration in isolation, and prevents secure credentials from being stored in version control.<br><br>
+<b>NOTE:<br>
+Do not enter spaces before and after the "=" sign.<br>
+Enter your values without the quotes (" ")</b><br><br>
+To set variable only for current shell:
+```
+VARNAME="your value"
+```
+
+To set it for current shell and all processes started from current shell:
+```
+export VARNAME="your value"      # shorter, less portable version
+```
+To set it permanently for all future bash sessions add such line to your ```.bashrc``` file in your ```$HOME``` directory.
+
+To set it permanently, and system wide (all users, all processes) add ```set``` variable in ```/etc/environment```:
+```
+sudo -H gedit /etc/environment
+```
+This file only accepts variable assignments like:
+```
+VARNAME="your value"
+```
+Do not use the export keyword here.<br><br>
+Here is the list of environment variables you need to set:
+```
+# Your Reddit ID & Pass
+reddit_username="your_reddit_username"
+reddit_password="your_reddit_password"
+
+# Reddit API ID & Key (which you can get from here: https://www.reddit.com/prefs/apps/)
+client_id="your_client_id"
+client_secret="your_client_secret"
+
+# Oxford Dictionary application ID & Key (which you can get from here: https://developer.oxforddictionaries.com/)
+app_id="your_app_id"
+app_key="your_app_key"
+```
+
+You need to logout from current user and login again so environment variables changes take place
+
+#### Start the Bot
 ```
 $ python3 wordbook_bot.py
 ```
@@ -127,14 +170,23 @@ password = os.environ['reddit_password']
 client_id = os.environ['client_id']
 client_secret = os.environ['client_secret']
 ```
-At this point, your bot is not yet running. You still need to ```log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```
+
+To solve 2), a temporary solution would be to save comments as soon as you reply to them. If a comment has been saved, then don't reply to that comment. Else, reply to that comment and then save it. To save a comment, use:
+```
+comment.save()
+```
+This is a temporary solution because Reddit has a max cap of 1000 for the number of comments/posts you can save. <br>
+A better solution would be to use a Database to store all the comment IDs.<br>
+
+At this point, your bot is not yet running. You still need to ```Log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```<br><br>
+The free version of Heroku gives you 550 hours of dyno usage each month. 
 
 ### Viewing the output
 Everything the bot prints (including stacktraces when it crashes) goes to the Heroku log, which you can view with this command:
 ```
 heroku logs
 ```
-However, this only shows about 100 lines. In order to view the logs in real time, use the command:
+However, this displays only about 100 lines. In order to view the logs in real time, use the command:
 ```
 heroku logs -t
 ```
@@ -145,7 +197,7 @@ heroku logs -t
 !Dict word
 
 
-#### References:
+## References<a name="references"></a>:
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
 https://gist.github.com/hzsweers/8595628<br>
 https://devcenter.heroku.com/articles/git<br>
