@@ -8,6 +8,7 @@ import bot_login
 
 def reply_to_comment(r, comment_id, comment_reply, dictionary_type, comment_subreddit, comment_author, comment_body):
     comment_to_be_replied_to = r.comment(id=comment_id)
+    comment_to_be_replied_to.save()
     comment_to_be_replied_to.reply(comment_reply)
     print ("\nReply details:\nDictionary: {}\nSubreddit: r/{}\nComment: \"{}\"\nUser: u/{}\a". format(dictionary_type, comment_subreddit, comment_body, comment_author))
 
@@ -31,7 +32,8 @@ def run_bot(r, after_utc):
                     comment_body = x["body"]
                     comment_id = x["id"]
                     comment_subreddit = x["subreddit"]
-                    if ("!dict" in comment_body.lower() and comment_author != "Wordbook_Bot"):
+                    comment_saved = r.comment(id=comment_id)
+                    if ("!dict" in comment_body.lower() and not comment_saved.saved and comment_author != "Wordbook_Bot"):
                         print ("\n\nFound a comment!")
                         comment_body_list = list(comment_body.split())[1:]
 
@@ -122,7 +124,7 @@ def run_bot(r, after_utc):
                                 comment_reply = "\n\nSorry, such a word does not exist!"
                                 dictionary_type = "None"
 
-                        comment_reply += "\n\n\n\n---\n\n*^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)*\n\n*^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))*"
+                        comment_reply += "\n\n\n\n---\n\n^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)\n\n^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))"
 
                         reply_to_comment(r, comment_id, comment_reply, dictionary_type, comment_subreddit, comment_author, comment_body)
 
@@ -146,7 +148,7 @@ def run_bot(r, after_utc):
 
     except Exception as e:
         print (str(e.__class__.__name__) + ": " + str(e))
-        
+
     return str(after_utc)
 
 if __name__ == "__main__":
