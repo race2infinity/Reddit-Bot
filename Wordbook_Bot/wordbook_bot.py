@@ -124,7 +124,7 @@ def run_bot(r, after_utc):
                                 comment_reply = "\n\nSorry, such a word does not exist!"
                                 dictionary_type = "None"
 
-                        comment_reply += "\n\n\n\n---\n\n^(Beep boop. I am a bot. If there are any issues, contact my [master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).)\n\n^(Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot))"
+                        comment_reply += "\n\n\n\n---\n\n^(Beep boop. I am a bot. If there are any issues, contact my) [^Master ](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot)\n\n^(Want to make a similar reddit bot? Check out: ) [^GitHub ](https://github.com/kylelobo/Reddit-Bot)"
 
                         reply_to_comment(r, comment_id, comment_reply, dictionary_type, comment_subreddit, comment_author, comment_body)
 
