@@ -1,0 +1,179 @@
+{
+    "data": [
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict nose",
+            "created_utc": 1541792972,
+            "id": "e9dmd3n",
+            "subreddit": "test"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict motorsport",
+            "created_utc": 1541792968,
+            "id": "e9dmcwx",
+            "subreddit": "test"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict boat",
+            "created_utc": 1541792963,
+            "id": "e9dmcnl",
+            "subreddit": "test"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "1. text\n\n    !dict word\n\ntext",
+            "created_utc": 1541792682,
+            "id": "e9dlzmv",
+            "subreddit": "test"
+        },
+        {
+            "author": "Glutanimate",
+            "body": "First of all: I think it's great that you're thinking about contributing to the add-on dev community at large rather than implementing a domain-specific solution for your add-on, despite the additional work the former will require.\n\nAt the same time I think that these shortcomings in Anki's add-on system will have to be addressed in Anki itself; and a [recent discussion between Damien and luoliyan](https://anki.tenderapp.com/discussions/ankidesktop/30652-add-on-config-synchronisation) would indicate that changes in that direction might be on the table past the 2.1 line of releases (or more specifically once Anki is ready to break backwards-compatibility with older clients).\n\nStill, looking at Anki's release history it might be a while before that date arrives, and so it might be worth going after this effort anyways.\n\nIf you do want to go through with this, my recommendation would be to work with the media collection rather than notes.\n\nFrom my experience in being forced to expose add-on internal data that should rather be kept from the user (e.g. Note IDs in Image Occlusion, occlusion settings in Cloze Overlapper) I've learned that it's best not to risk it. It's just a major headache having to deal with bug reports where you never know if you're dealing with a bug in your code, or a user (not always) unwittingly messing with things they shouldn't have.\n\nI fear that having config data exposed as notes will lead to that same type of confusion and inevitably cause problem reports that will be very hard to follow up on (especially considering that many add-on authors will not even know that a third-party add-on is at play!). Using card (templates) instead of notes &amp; fields would alleviate some of that, but not fix it.\n\nSo to come back to the media collection: One potential alternate solution would be to use JSON files in the media directory. You might already be aware of this, but files prepended with an underscore (e.g. `_&lt;addon_name&gt;.json`) are exempt from Anki's media use checks. That could be one avenue to synchronize the meta.json values.\n\nThough there are a number of downsides and caveats at play here as well:\n\n- Users might end up with dozens of these config files if they have a lot of add-ons installed. Not an issue per se, but some people might find that annoying.\n    - It would be possible to combine all configurations into one file, but then you'd once again be dealing with the issue of how to merge changes in different add-ons between different machines. \n- Add-ons might already use this approach (e.g. luoliyan's Incremental Reading in the future)\n- From what I recall there might still be an issue where exporting a deck will also package all underscored media files with it, regardless of whether they are actually used anywhere in the notes or card templates. I know that we did have a fix for this pushed somewhere down the 2.0 release line, but I think I did run into this again even after the patch. You might want to check on that if you go down the media collection route.\n\n--\n\nBut regardless of the exact implementation, there are also some more general issues to consider:\n\n- JSON schema conflicts between different versions of the same add-on, e.g.:\n    - machine 1 has version 0.1.0 of add-on installed, machine 2 version 0.2.0\n    - v0.1.0 uses a list type as the value of key \"state\",  v0.2.0 uses a dict type\n    - v0.2.0 config file is synced to a v0.1.0 add-on installation\n    - now v0.1.0 produces a KeyError because it expects a list as \"state\"s value rather than a dict.\n    - or, the other way around: v0.1.0 config is synced to v0.2.0 which produces a TypeError because it expects a dict.\n    -  Even with proper config upgrade routines implemented, the first scenario (new config file on old add-on version) would be impossible to plan ahead for.\n- Some add-on authors might use different config storages for different purposes. E.g.: A lot of my add-ons use both `mw.col.conf` (synced) and `mw.pm.profile` (local, might migrate to meta.json soon).\n\n  I use the former for settings that are machine-agnostic, and the latter for settings that might be better relegated to remain local (e.g. local paths, etc.). A third-party sync solution would take that choice away.\n\nIn conclusion, this is definitely quite a difficult problem to tackle properly – which is probably also why even other apps with more mature plugin ecosystems like VS Code or Sublime Text don't really support plugin config sync, either.\n\n\n---\n\nP.S.: thanks to /u/ijgnord for nudging me to bring this thread to my attention :)\n",
+            "created_utc": 1541789818,
+            "id": "e9di95j",
+            "subreddit": "Anki"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict door",
+            "created_utc": 1541789336,
+            "id": "e9dhnw0",
+            "subreddit": "test"
+        },
+        {
+            "author": "kungming2",
+            "body": "!dict bot",
+            "created_utc": 1541789131,
+            "id": "e9dhef2",
+            "subreddit": "testingground4bots"
+        },
+        {
+            "author": "Prcrstntr",
+            "body": "a dict of dicts",
+            "created_utc": 1541782929,
+            "id": "e9d9hvt",
+            "subreddit": "worldnews"
+        },
+        {
+            "author": "djimbob",
+            "body": "I'd definitely teach functions before objects/classes and probably basic data structures like `list`, `tuple`, `dict`, `str` and `set` before iteration.  (Or at least only teach `while` statement if you go iteration first; `for x in iterable` type loops don't make sense without data structures.)\n\nI'd also throw in `modules` and `import` and `pip` statements very early on with a couple cool diverse examples.  E.g., have a pre-written example where you use the `requests` library to make an HTTP call to pull data from somewhere (say financial data or just a local weather forecast from somewhere).  Then make a [second version where you pull a text to speech library](https://pythonprogramminglanguage.com/text-to-speech/) that can reads the forecast you just downloaded or conditionally say different things based on the forecast (`if rain: say(\"bring umbrella\")`.\n\nAlso since you said its a \"funds company\", I would have one of the later topics introduce `pandas` with detailed examples of [how to analyze financial data in an interactive ipython notebook](https://pandas.pydata.org/pandas-docs/stable/tutorials.html).",
+            "created_utc": 1541780801,
+            "id": "e9d6toq",
+            "subreddit": "Python"
+        },
+        {
+            "author": "djimbob",
+            "body": "Absent a very large dataset of labeled data for your definition of \"meaningful\", this doesn't seem like a task well-fitted to machine learning.\n\nSearching for words in a string (from a dict of potential words) is a straightforward task that requires no learning.\n\nAllowing letters to be used multiple times with overlap (e.g., `'SouPeaSugaRice'` -&gt; `['Soup', 'Pea', 'Sugar', 'Rice']`) doesn't add particular complexity though could give more nonsensical results.\n\nAfter identifying potential mappings, you'll have to find ways to score the mappings to see if any qualify as \"meaningful\".  Maybe you have data based on word usage or data based on parts of speech tagging and identified valid sentence structures based on PoS.  E.g., `Iwenttoatherapist` giving two options `['I', 'went', 'to', 'a', 'therapist']` or `['I', 'went', 'to', 'a', 'the', 'rapist']`, having the second one get eliminated because the noun `rapist` has two articles in front of it.",
+            "created_utc": 1541779368,
+            "id": "e9d517i",
+            "subreddit": "Python"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict arrangement",
+            "created_utc": 1541777082,
+            "id": "e9d29hs",
+            "subreddit": "testingground4bots"
+        },
+        {
+            "author": "impshum",
+            "body": "Meh... Tis the first dict list I found (hence \"It seems to work\").",
+            "created_utc": 1541776464,
+            "id": "e9d1jma",
+            "subreddit": "Python"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict what is love",
+            "created_utc": 1541774398,
+            "id": "e9cz72h",
+            "subreddit": "test"
+        },
+        {
+            "author": "Wordbook_Bot",
+            "body": "!dict what is love",
+            "created_utc": 1541774272,
+            "id": "e9cz1zx",
+            "subreddit": "test"
+        },
+        {
+            "author": "Wordbook_Bot",
+            "body": "!dict what is love",
+            "created_utc": 1541774142,
+            "id": "e9cywqx",
+            "subreddit": "test"
+        },
+        {
+            "author": "Cockmonkey69",
+            "body": "What a dict move. ",
+            "created_utc": 1541773240,
+            "id": "e9cxwip",
+            "subreddit": "worldnews"
+        },
+        {
+            "author": "VWoodPowerScore",
+            "body": "Excellent! Please do not hesitate to reach out to me as you're working through it. You can find me on here or more quickly at  vwood@powerscore.com. I'm happy to help! And I'd love your feedback when you're done. \n\nEvery student is different, of course, so I'm speaking from my personal preference here, but I also believe it's the best way to go: I like to work through practice questions WHILE I am learning vocabulary. No one is ever going to know all of the words on the GRE (well, at least no mere mortal. I have one coworker who might know them all, but I'm pretty sure he's not human. You know who you are). I certainly don't, and I've been teaching vocab and writing books about vocab for nearly 15 years now. Even the words I know today (ubiquitous, for example--I've used it twice in a new course I'm writing this week) I'm likely to forget in 6 months because it's not a word that I use in my everyday speech and writing, so I'm not reinforcing it in my long term memory. But what I've learned about the GRE is that you can still get every question correct without knowing the definition of every word. Sometimes it's about eliminating the words you do know and being left with that one unknown word and trusting your knowledge of the wrong answers to select it as the right answer. Sometimes its about using the similar roots and affixes of words you do know to break down that word you don't know just to get a sense of whether it's positive or negative (like malfeasance or malediction. You may not know what they mean, but you can think about words you do know that start with mal-.  Malfunction, malpractice, malnutrition, etc. Clearly mal- means \"bad.\" For malediction, you can go one step farther and think of words with dict- or diction-: diction, dictionary, dictation, dictator. Obviously it has to do with words. So the best guest for malediction is \"bad words\" which is close, because it means \"curse\". If I am looking for a word with a negative connotation, anything starting with mal- would be a top contender. And if I'm looking for a word with a positive connotation, mal- words can be eliminated). Sometimes it's just thinking about how you've heard that word used (like the word \"demagogue.\" I couldn't tell you the exact meaning right now, but I know it's often used with world leaders and politicians, and I'm pretty sure it's used in a negative way). And lastly, sometimes it's about idiom. Some GRE answer choices just don't fit well with the surrounding words. I may not know what the word means, but I know it doesn't sound right when I insert it in the sentence (take an example from the Official GRE VR Practice Questions book. I haven't even read the entire sentence, just this part: \"the land grades...into the ice so ___ that you...\" The word \"permanently\" just doesn't fit perfectly as the right answer must. Obviously I know the word \"permanently\" but I find that this can also work with words I don't know. They just somehow do not fit). Anyway, for me, I want to practice questions with WORDS I DO NOT KNOW so that I learn how sort them into contenders and losers even when I am not sure of their meaning. I also prefer this method because then when I'm reviewing the question and the vocabulary words in it, I have better retention of those new definition since I engaged with the word while trying to solve the question. I predicted its meaning, I looked at its roots, I tried thinking of similar words I know. I have started to internalize that word. I have less retention when I'm just reading words off a list and trying to remember what they mean. \n\nI know there are limited resources out there which makes it scary to use them up in practice. Maybe save the actual practice tests, but not the rest. Also, check out old SATs from before 2015. From 2005-2015, the tests had 19 sentence completion questions on each test and ETS helped write those questions (and the test prior to 2005 has some, too). While you won't find any dual and triple blanks or sentence equivalence, you will find the same sentence structures and the same vocabulary. CrackSAT.net has some of those practice questions and a Google search of \"old sat pdf\" should bring up some official tests. \n\nI hope that helps! Again, feel free to reach out as you work through the book. Thanks so much for checking it out!",
+            "created_utc": 1541772476,
+            "id": "e9cx2nx",
+            "subreddit": "GRE"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict alopecia",
+            "created_utc": 1541768800,
+            "id": "e9cthcu",
+            "subreddit": "vaxxhappened"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict balls",
+            "created_utc": 1541768705,
+            "id": "e9cte56",
+            "subreddit": "youseeingthisshit"
+        },
+        {
+            "author": "Method__Man",
+            "body": "Dictators gotta dict ",
+            "created_utc": 1541768537,
+            "id": "e9ct8u9",
+            "subreddit": "worldnews"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict hometown",
+            "created_utc": 1541768288,
+            "id": "e9ct130",
+            "subreddit": "test"
+        },
+        {
+            "author": "NoNutNovember_Bot",
+            "body": "!dict testy",
+            "created_utc": 1541768277,
+            "id": "e9ct0qm",
+            "subreddit": "test"
+        },
+        {
+            "author": "Exodus111",
+            "body": "Think of making a video game, you have to make a player.\n\nDo you make functions like this?\n\n    def player_move(direction)\n\n    def player_jump(height)\n\n    def player_attack(target)\n\n    def player_heal(amount)\n\n    def player_open_inventory()\n\n    def player_place_item_in_inventory(item)\n\n    def player_remove_item_from_inventory(item)\n\nNo, that would be stupid. Instead you make it like this.\n\n    class Player(Entity):\n\nAnd then add all those methods to the player class so it ends up looking like this:\n\n    player1 = Player()\n    player1.move(direction)\n    player1.attack(target)\n\netc...\n\nNonw, Entity is a class that contains all the physics and movement information of any entity, the player(s) and the NPCs. Now look at what happens if your game is multiplayer, and you need more than one player.\n\n    player1 = Player()\n    player2 = Player()\n    player3 = Player()\n\nSame thing applies to NPCs, imagine making a Fantasy RPG, each NPC is spawned from a single NPC class like so:\n\n    orc1 = NPC(\"Orc\")\n    orc2 = NPC(\"Orc\")\n    goblin1 = NPC(\"Goblin\")\n\nAnd so on. In some situations, like making games, OOP is hands down the way to go. Doing this using functions would not be impossible, it would just be an utter mess.\n\nBut there are situations where functions are better options than classes. Think of it like this:\n\n**A Function is an abstraction of code, a class is an abstraction of Data.**\n\nIn other words a function DOES something, while a class IS something.\n\nA class needs methods, which are basically functions, to do anything. But, if you are making a class just to tie some functions together you would probably be better off making functions.\n\nHowever if your functions are constantly throwing a global dictionary around, and those functions constantly need to see the updated version of that dict to run, you are probably better off using a class.",
+            "created_utc": 1541757335,
+            "id": "e9clll8",
+            "subreddit": "learnpython"
+        },
+        {
+            "author": "gradenko_2000",
+            "body": "what a DICT head",
+            "created_utc": 1541755593,
+            "id": "e9cklcr",
+            "subreddit": "Philippines"
+        },
+        {
+            "author": "postcrypto",
+            "body": "' \"We are confident that the senator would provide good direction and sound management to the DICT, consistent with the President's priority programs beneficial to Filipino consumers in the areas of information, communications and technology,\" Presidential Spokesperson Sal Panelo said in a statement Friday. '\n\n\nWala akong masabi jusko.",
+            "created_utc": 1541754012,
+            "id": "e9cjp2t",
+            "subreddit": "Philippines"
+        }
+    ]
+}
