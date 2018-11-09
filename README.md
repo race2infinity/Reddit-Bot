@@ -192,10 +192,10 @@ heroku logs -t
 ```
 
 ## How to use the Bot<a name="how_to_use_the_application"></a>
-!dict word <br>
-<i>or</i> <br>
-!Dict word
-
+```
+!dict word
+```
+The first part, i.e. "!dict" <b>is not</b> case sensitive.
 
 ## References<a name="references"></a>:
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
