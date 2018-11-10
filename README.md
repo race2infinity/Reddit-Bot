@@ -189,6 +189,14 @@ Initializing repository, done.
 updating 'refs/heads/master'
   ...
 ```
+Code diffs, manual and auto deploys via GitHub are also possible. To use GitHub as a deployment method:
+```
+Heroku Dashboard > Select your App > Deploy > Deployment Method > Connect to GitHub > App connected to GitHub > Select your GitHub repo
+```
+If you have a local Git repo, you will have to use:
+```
+$ git push origin master
+```
 #### Deploying from a branch besides master
 If you want to deploy code to Heroku from a non-```master``` branch of your local repository (for example, ```testbranch```), use the following syntax to ensure it is pushed to the remote’s ```master``` branch:
 ```
