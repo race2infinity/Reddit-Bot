@@ -171,7 +171,7 @@ client_id = os.environ['client_id']
 client_secret = os.environ['client_secret']
 ```
 
-To solve 2), a temporary solution would be to save comments as soon as you reply to them. If a comment has been saved, then don't reply to that comment. Else, reply to that comment and then save it. To save a comment, use:
+To solve 2), a temporary solution would be to save comments as soon as you reply to them. If a comment has been saved (use ```comment.saved``` to check), then don't reply to that comment. Else, reply to that comment and then save it. To save a comment, use:
 ```
 comment.save()
 ```
