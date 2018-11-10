@@ -1,6 +1,10 @@
 # Wordbook Bot - A Dictionary Bot for Reddit
-This repo teaches you how to make a Reddit Bot using the [PRAW](https://praw.readthedocs.io/en/latest/) (The Python Reddit API Wrapper) Python package. <br>
-In this repo, I have made a dictionary bot which gives the meaning of particular word/phrase in the English language.
+This repo teaches you how to:
+
++ Make a Reddit Bot using the [PRAW](https://praw.readthedocs.io/en/latest/) (The Python Reddit API Wrapper) Python package.
++ Deploy your Reddit Bot on [Heroku](https://www.heroku.com/) - A platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
+
+In this repo, I have made a Dictionary Bot which gives the meaning of particular word / phrase in the English / Slang language.
 
 # Index
 + [Why was Wordbook Bot made?](#why_was_wordbook_bot_made)
@@ -32,9 +36,9 @@ $ cd Reddit-Bot/Wordbook_Bot
 #### Install Dependencies
 ```
 $ sudo apt-get install python3.6
-$ sudo apt-get install pip
-$ pip install praw --user
-$ pip install requests --user
+$ sudo apt-get install pip3
+$ pip3 install praw --user
+$ pip3 install requests --user
 ```
 #### Setting up Environment Variables
 An app’s environment-specific configuration should be stored in environment variables (not in the app’s source code). This lets you modify each environment’s configuration in isolation, and prevents secure credentials from being stored in version control.<br><br>
@@ -269,7 +273,7 @@ Dude1: dafuq?
 
 <sup>Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)</sup>
 
-## How does the bot work?<a name="how_does_the_bot_work"></a>
+## How does the Bot work?<a name="how_does_the_bot_work"></a>
 
 The bot first extracts the word from the comment and then fetches word definitions, part of speech, example and source from the Oxford Dictionary API.
 
@@ -279,14 +283,14 @@ The bot uses the Pushshift API to fetch comments, PRAW module to reply to commen
 
 The entire bot is written in Python 3.6
 
-## Why didn't the bot notice me?<a name="why_didnt_the_bot_notice_me"></a>
-1. Make sure you are calling the bot correctly. It is:
+## Why didn't the Bot notice me?<a name="why_didnt_the_bot_notice_me"></a>
++ Make sure you are calling the bot correctly. It is:
 
 ``!dict word``
 
 The first part, i.e. "!dict" **is not** case sensitive.
 
-2. The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible.
++ The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible.
 
 ## References<a name="references"></a>:
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
