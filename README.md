@@ -1,12 +1,26 @@
-# Reddit Bot
+# Wordbook Bot - A Dictionary Bot for Reddit
 This repo teaches you how to make a Reddit Bot using the [PRAW](https://praw.readthedocs.io/en/latest/) (The Python Reddit API Wrapper) Python package. <br>
 In this repo, I have made a dictionary bot which gives the meaning of particular word/phrase in the English language.
 
 # Index
++ [Why was Wordbook Bot made?](#why_was_wordbook_bot_made)
 + [Installation](#installation)
 + [Deploying the Bot on Heroku (Platform that allows you to host your Bot)](#deploying_the_bot)
 + [How to use the Bot](#how_to_use_the_application)
++ [How does the Bot work?](#how_does_the_bot_work)
++ [Why didn't the Bot notice me?](#why_didnt_the_bot_notice_me)
 + [References](#references)
+
+## Why was Wordbook Bot made?<a name="why_was_wordbook_bot_made"></a>
+
+Wordbook Bot was made to help Redditors:
+
++ Quickly look up the meaning of an English / Slang word you see.
+
++ Find the right meaning of an English / Slang word.
+
++ Find examples of the use of a word in natural language.
+
 
 ## Installation<a name="installation"></a>
 ### Running Locally
@@ -64,6 +78,12 @@ app_key="your_app_key"
 
 You need to logout from current user and login again so environment variables changes take place
 
+You can check if your environment variables have been set by typing ```echo $var_name``` in terminal:
+```
+$ echo $reddit_username
+# Wordbook_Bot
+```
+
 #### Start the Bot
 ```
 $ python3 wordbook_bot.py
@@ -71,7 +91,7 @@ $ python3 wordbook_bot.py
 Your bot should now be running.
 
 
-### Deploying the Bot on Heroku (Platform that allows you to host your bot)<a name="deploying_the_bot"></a>
+## Deploying the Bot on Heroku (Platform that allows you to host your bot)<a name="deploying_the_bot"></a>
 Firstly, make an account on [Heroku](https://www.heroku.com/) <br><br>
 Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. In your main directory, create two files: "requirements.txt" and "runtime.txt".<br> The requirements.txt file should contain output of the command "pip freeze > requirements.txt". If you're not using virtualenv, you'll have delete all the lines with packages your code doesn't use.<br> Runtime.txt just specifies which python version for Heroku to use. Mine just has the line "python-3.6.6" in it. <br><br>
 Now it's time to set up your git repo to use it as a remote.
@@ -173,15 +193,15 @@ $ git push heroku testbranch:master
 ### After setting up repo on Heroku
 Once you've got your repo set up on Heroku, there's two things you'll have to change:<br>
 1. Can't use a prop (credentials) file for username/password anymore since it's untracked in your gitignore, so you'll have to set environmental variables.<br>
-2. Heroku has it's own weird File System, and you can't preserve generated files between runs (AKA pickle caching isn't an option).<br>
+2. Heroku has an ephemeral File System, and you can't preserve generated files between runs (aka pickle caching isn't an option).<br>
 
 To solve 1), you'll have to set environmental variables. You can set it like this from terminal:
 ```
 # Set heroku config/env variables
-$ heroku config:set reddit_username=<username>
-$ heroku config:set reddit_password=<password>
-$ heroku config:set client_id=<client_id>
-$ heroku config:set client_secret=<client_secret>
+$ heroku config:set reddit_username=<your_reddit_username>
+$ heroku config:set reddit_password=<your_reddit_password>
+$ heroku config:set client_id=<your_client_id>
+$ heroku config:set client_secret=<your_client_secret>
 
 # Confirm they're set with this command
 $ heroku config
@@ -189,8 +209,8 @@ $ heroku config
 And programmatically retrieve it in your code like this:
 ```
 # Retrieve heroku env variables
-username = os.environ['reddit_username']
-password = os.environ['reddit_password']
+reddit_username = os.environ['reddit_username']
+reddit_password = os.environ['reddit_password']
 client_id = os.environ['client_id']
 client_secret = os.environ['client_secret']
 ```
@@ -202,7 +222,9 @@ comment.save()
 This is a temporary solution because Reddit has a max cap of 1000 for the number of comments/posts you can save. <br>
 A better solution would be to use a Database to store all the comment IDs.<br>
 
-At this point, your bot is not yet running. You still need to ```Log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```<br><br>
+At this point, your bot is not yet running. You still need to:
+
+```Log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```<br><br>
 The free version of Heroku gives you 550 hours of dyno usage each month. 
 
 ### Viewing the output
@@ -216,10 +238,55 @@ heroku logs -t
 ```
 
 ## How to use the Bot<a name="how_to_use_the_application"></a>
+To use the bot, type:
 ```
 !dict word
 ```
-The first part, i.e. "!dict" <b>is not</b> case sensitive.
+The first part, i.e. "!dict" **is not** case sensitive.
+
+The bot will then give you the Oxford Dictionary (or Urban Dictionary; if the word does not exist in the Oxford Dictionary) definition of the word as a comment reply.
+
+### Example:
+
+> !dict what is love
+
+**Definition:**
+
+Baby, dont hurt me~
+Dont hurt me~ no more.
+
+**Example:**
+
+Dude1: Bruh, what is love?
+Dude2: Baby, dont hurt me, dont hurt me- no more!
+Dude1: dafuq?
+
+**Source:** https://www.urbandictionary.com/define.php?term=what%20is%20love
+
+---
+
+<sup>Beep boop. I am a bot. If there are any issues, contact my [Master](https://www.reddit.com/message/compose/?to=PositivePlayer1&subject=/u/Wordbook_Bot).</sup>
+
+<sup>Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)</sup>
+
+## How does the bot work?<a name="how_does_the_bot_work"></a>
+
+The bot first extracts the word from the comment and then fetches word definitions, part of speech, example and source from the Oxford Dictionary API.
+
+If the word does not exist in the Oxford Dictionary, the Oxford API then returns a 404 response upon which the bot then tries to fetch results form the Urban Dictionary API.
+
+The bot uses the Pushshift API to fetch comments, PRAW module to reply to comments and Heroku as a server.
+
+The entire bot is written in Python 3.6
+
+## Why didn't the bot notice me?<a name="why_didnt_the_bot_notice_me"></a>
+1. Make sure you are calling the bot correctly. It is:
+
+``!dict word``
+
+The first part, i.e. "!dict" **is not** case sensitive.
+
+2. The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible.
 
 ## References<a name="references"></a>:
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
