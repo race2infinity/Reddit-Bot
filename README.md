@@ -193,7 +193,7 @@ Code diffs, manual and auto deploys via GitHub are also possible. To use GitHub 
 ```
 Heroku Dashboard > Select your App > Deploy > Deployment Method > Connect to GitHub > App connected to GitHub > Select your GitHub repo
 ```
-If you have a local Git repo, you will have to use:
+Thereafter, you can deploy code from your GitHub repo. If you have a local Git repo (if you have cloned your main GitHub repo), you will have to push your code to GitHub by using:
 ```
 $ git push origin master
 ```
