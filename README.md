@@ -133,6 +133,30 @@ $ heroku git:remote -a thawing-inlet-61413
 set git remote heroku to https://git.heroku.com/thawing-inlet-61413.git
 ```
 
+### Changing your App name on Heroku
+You can rename an app at any time with the ```heroku apps:rename command```. For example, to rename an app named “oldname” to “newname”, run the ```heroku apps:rename``` command from your app’s Git repository:
+```
+$ heroku apps:rename newname
+Renaming oldname to newname... done
+http://newname.herokuapp.com/ | git@herokuapp.com:newname.git
+Git remote heroku updated
+```
+You can also rename an app from outside of its associated Git repository by including the ```--app``` option in the command:
+```
+$ heroku apps:rename newname --app oldname
+http://newname.herokuapp.com/ | git@herokuapp.com:newname.git
+```
+When you rename an app, it immediately becomes available at the new corresponding ```herokuapp.com``` subdomain (```newname.herokuapp.com```) and unavailable at the old one (```oldname.herokuapp.com```).
+
+If you use the Heroku CLI to rename an app from inside it's associated Git repository, your local Heroku remote is updated automatically. However, other instances of the repository must update the remote’s details manually.
+
+You can run the following commands to update the remote’s details in other repository instances:
+```
+$ git remote rm heroku
+$ heroku git:remote -a newname
+```
+Replace ```newname``` with the new name of the app, as specified in the ```rename``` command.
+
 ### Deploying code
 To deploy your app to Heroku, you typically use the ```git push``` command to push the code from your local repository’s ```master``` branch to your ```heroku``` remote, like so:
 ```
