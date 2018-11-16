@@ -1,6 +1,6 @@
 oauthlib==1.0.3
 praw==6.0.0
 prawcore==1.0.0
-psycopg2-binary==2.7.6.1
 requests==2.20.0
+psycopg2-binary==2.7.6.1
 virtualenv==15.1.0
