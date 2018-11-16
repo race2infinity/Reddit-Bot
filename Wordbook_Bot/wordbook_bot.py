@@ -160,12 +160,12 @@ if __name__ == "__main__":
                 created_utc = str(created_utc[0][0])
             else:
                 created_utc = ""
-
+            print("Created UTC = ",created_utc)
             print ("\nFetching comments..")
             while True:
                 # Fetching all new comments that were created after created_utc time
                 created_utc = run_bot(r, created_utc, conn)
-                time.sleep(5)
+                time.sleep(10)
 
         except Exception as e:
             print (str(e.__class__.__name__) + ": " + str(e))
