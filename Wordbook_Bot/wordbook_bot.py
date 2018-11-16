@@ -45,7 +45,7 @@ def run_bot(r, created_utc, conn):
         if (len(parsed_comment_json["data"]) > 0):
             created_utc = parsed_comment_json["data"][0]["created_utc"]
 
-            cur.execute("UPDATE comment_time SET created_utc = {}". format(str(created_utc)))
+            cur.execute("UPDATE comment_time SET created_utc = {}". format(created_utc))
             cur.execute("SELECT created_utc from comment_time")
             rows = cur.fetchall()
 
