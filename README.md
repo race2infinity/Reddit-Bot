@@ -85,7 +85,7 @@ You need to logout from current user and login again so environment variables ch
 You can check if your environment variables have been set by typing ```echo $var_name``` in terminal:
 ```
 $ echo $reddit_username
-# Wordbook_Bot
+Wordbook_Bot
 ```
 
 #### Start the Bot
