@@ -46,6 +46,7 @@ def run_bot(r, created_utc, conn):
             created_utc = parsed_comment_json["data"][0]["created_utc"]
 
             cur.execute("UPDATE comment_time SET created_utc = {}". format(str(created_utc)))
+            cur.execute("SELECT created_utc from comment_time")
             rows = cur.fetchall()
 
             print("run_bot()")
@@ -155,12 +156,13 @@ if __name__ == "__main__":
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
             cur = conn.cursor()
+            cur.execute("SELECT created_utc from comment_time")
+            created_utc = cur.fetchall()
+
             rows = cur.fetchall()
 
             print("main()")
             print(str(rows))
-            cur.execute("SELECT created_utc from comment_time")
-            created_utc = cur.fetchall()
 
             if (len(created_utc) > 0):
                 created_utc = str(created_utc[0][0])
