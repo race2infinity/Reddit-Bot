@@ -146,9 +146,9 @@ if __name__ == "__main__":
     while True:
         try:
             r = bot_login.bot_login()
+
             DATABASE_URL = os.environ['DATABASE_URL']
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
             cur = conn.cursor()
             cur.execute("SELECT created_utc from comment_time")
             created_utc = cur.fetchall()
@@ -157,6 +157,7 @@ if __name__ == "__main__":
                 created_utc = str(created_utc[0][0])
             else:
                 created_utc = ""
+
             print ("\nFetching comments..")
             while True:
                 # Fetching all new comments that were created after created_utc time
@@ -165,4 +166,6 @@ if __name__ == "__main__":
 
         except Exception as e:
             print (str(e.__class__.__name__) + ": " + str(e))
+            cur.close()
+            conn.close()
             time.sleep(15)
