@@ -16,8 +16,7 @@ def json_dump_and_parse(file_name, request):
 def reply_to_comment(r, comment_id, comment_reply, dictionary_type, comment_subreddit, comment_author, comment_body):
     try:
         comment_to_be_replied_to = r.comment(id=comment_id)
-        # comment_to_be_replied_to.save()
-        # comment_to_be_replied_to.reply(comment_reply)
+        comment_to_be_replied_to.reply(comment_reply)
         print ("\nReply details:\nDictionary: {}\nSubreddit: r/{}\nComment: \"{}\"\nUser: u/{}\a". format(dictionary_type, comment_subreddit, comment_body, comment_author))
 
     # Probably low karma so can't comment as frequently
@@ -55,7 +54,6 @@ def run_bot(r, created_utc, conn):
                 comment_body = comment["body"]
                 comment_id = comment["id"]
                 comment_subreddit = comment["subreddit"]
-                comment_saved = r.comment(id=comment_id)
 
                 if ("!dict" in comment_body.lower() and comment_author != "Wordbook_Bot"):
                     print ("\n\nFound a comment!")
