@@ -47,10 +47,6 @@ def run_bot(r, created_utc, conn):
 
             cur.execute("UPDATE comment_time SET created_utc = {}". format(created_utc))
             cur.execute("SELECT created_utc from comment_time")
-            rows = cur.fetchall()
-
-            print("run_bot()")
-            print(str(rows))
             conn.commit()
 
             for comment in parsed_comment_json["data"]:
@@ -159,20 +155,13 @@ if __name__ == "__main__":
             cur.execute("SELECT created_utc from comment_time")
             created_utc = cur.fetchall()
 
-            rows = cur.fetchall()
-
-            print("main()")
-            print(str(rows))
-
             if (len(created_utc) > 0):
                 created_utc = str(created_utc[0][0])
             else:
                 created_utc = ""
-            print("1Created UTC = ",created_utc)
             print ("\nFetching comments..")
             while True:
                 # Fetching all new comments that were created after created_utc time
-                print("Created UTC = ",created_utc)
                 created_utc = run_bot(r, created_utc, conn)
                 time.sleep(10)
 
