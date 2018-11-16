@@ -4,6 +4,7 @@ import os
 import requests
 import json
 import bot_login
+import psycopg2
 
 def json_dump_and_parse(file_name, request):
     with open(file_name, "w+") as f:
@@ -11,15 +12,6 @@ def json_dump_and_parse(file_name, request):
     with open(file_name) as f:
         data = json.load(f)
     return data
-
-def comment_save_check(r):
-    saved = r.user.me().saved(limit=None)
-    count = 1
-    for item in saved:
-        if count > 100:
-            comment = r.comment(id=item)
-            comment.unsave()
-        count += 1
 
 def reply_to_comment(r, comment_id, comment_reply, dictionary_type, comment_subreddit, comment_author, comment_body):
     try:
@@ -53,6 +45,10 @@ def run_bot(r, created_utc):
         if (len(parsed_comment_json["data"]) > 0):
             created_utc = parsed_comment_json["data"][0]["created_utc"]
 
+            cur.execute("UPDATE comment_time SET created_utc = {}". format(str(created_utc)))
+
+            conn.commit()
+
             for comment in parsed_comment_json["data"]:
 
                 comment_author = comment["author"]
@@ -60,7 +56,7 @@ def run_bot(r, created_utc):
                 comment_id = comment["id"]
                 comment_subreddit = comment["subreddit"]
                 comment_saved = r.comment(id=comment_id)
-                
+
                 if ("!dict" in comment_body.lower() and not comment_saved.saved and comment_author != "Wordbook_Bot"):
                     print ("\n\nFound a comment!")
                     comment_body_list = list(comment_body.split())[1:]
@@ -152,13 +148,23 @@ if __name__ == "__main__":
     while True:
         try:
             r = bot_login.bot_login()
-            created_utc = ""
+            DATABASE_URL = os.environ['DATABASE_URL']
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+            cur = conn.cursor()
+
+            cur.execute("SELECT created_utc from comment_time")
+            created_utc = cur.fetchall()
+
+            if (len(created_utc) > 0):
+                created_utc = str(created_utc[0][0])
+            else:
+                created_utc = ""
+                
             print ("\nFetching comments..")
             while True:
-                # Making sure only 100 comments are saved. This is because Reddit has a cap of 1000 saved comments
-                comment_save_check(r)
                 # Fetching all new comments that were created after created_utc time
-                created_utc = run_bot(r, created_utc)
+                created_utc = run_bot(r, created_utc, conn)
                 time.sleep(5)
 
         except Exception as e:
