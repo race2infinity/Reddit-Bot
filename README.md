@@ -248,9 +248,20 @@ The psql client will typically be installed in /usr/bin:
 $ which psql
 /usr/bin/psql
 ```
+Start the Postgres server:
+```
+$ sudo systemctl start postgresql
+```
+Installing postgres using ```apt-get``` does not create a user role or a database.
+
+To create a superuser role and a database for your personal user account:
+```
+$ sudo -u postgres createuser -s $(whoami)
+```
 Checking if you have correctly installed Postgres:
 ```
-$ psql (10.6 (Ubuntu 10.6-1.pgdg16.04+1))
+$ sudo -u postgres psql
+psql (10.6 (Ubuntu 10.6-1.pgdg16.04+1))
 Type "help" for help.
 
 postgres=# 
@@ -430,4 +441,5 @@ The first part, i.e. "!dict" **is not** case sensitive.
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
 https://gist.github.com/hzsweers/8595628<br>
 https://devcenter.heroku.com/articles/git<br>
-http://amertune.blogspot.com/2014/04/tutorial-create-reddit-bot-with-python.html
+http://amertune.blogspot.com/2014/04/tutorial-create-reddit-bot-with-python.html<br>
+https://devcenter.heroku.com/articles/heroku-postgresql<br>
