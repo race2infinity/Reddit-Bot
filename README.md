@@ -232,9 +232,10 @@ To solve 2), a temporary solution would be to save comments as soon as you reply
 ```
 comment.save()
 ```
-This is a temporary solution because Reddit has a max cap of 1000 for the number of comments/posts you can save. <br><br>
+This is a temporary solution because Reddit has a max cap of 1000 for the number of comments/posts you can save. <br>
 
 A better solution would be to use a Database to store all the comment IDs. For this, you can use one of Heroku's many data storing / caching options. While most of these add-ons are free, they need you to verify yourself - by adding a credit card to your account. <br>
+
 The Heroku Postgres add-on however, does not require you to verify yourself. Heroku Postgres is a reliable and powerful database based on PostgreSQL. We'll be using the Heroku Postgres as the database for our Bot.
 
 ## Installing PostgreSQL<a name="installing_postgres"></a>
