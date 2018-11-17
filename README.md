@@ -347,7 +347,7 @@ cur = conn.cursor()
 # Executing your PostgreSQL query
 cur.execute("SELECT table_name from column_name")
 
-# In order to make the changes to the database permanent, we now commit our changes to the cities database
+# In order to make the changes to the database permanent, we now commit our changes
 conn.commit()
 
 # We have committed the necessary changes and can now close out our connection
