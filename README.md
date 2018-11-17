@@ -375,7 +375,7 @@ This will parse the values of the ```DATABASE_URL``` environment variable and co
 At this point, your bot is not yet running. You still need to:
 
 ```Log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```<br><br>
-The free version of Heroku gives you 550 hours of dyno usage each month. 
+The free version of Heroku gives you ```550``` hours of dyno usage each month. 
 
 ### Viewing the output
 Everything the bot prints (including stacktraces when it crashes) goes to the Heroku log, which you can view with this command:
@@ -432,11 +432,12 @@ The entire bot is written in Python 3.6
 ## Why didn't the Bot notice me?<a name="why_didnt_the_bot_notice_me"></a>
 + Make sure you are calling the bot correctly. It is:
 
-``!dict word``
+  ``!dict word``
 
-The first part, i.e. "!dict" **is not** case sensitive.
+  The first part, i.e. "!dict" **is not** case sensitive.
 
 + The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible.
++ I might have ran out of dynos for the month. ;__;
 
 ## References<a name="references"></a>:
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
