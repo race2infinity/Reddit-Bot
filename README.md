@@ -10,6 +10,7 @@ In this repo, I have made a Dictionary Bot which gives the meaning of particular
 + [Why was Wordbook Bot made?](#why_was_wordbook_bot_made)
 + [Installation](#installation)
 + [Deploying the Bot on Heroku (Platform that allows you to host your Bot)](#deploying_the_bot)
++ [Installing PostgreSQL](#installing_postgres)
 + [How to use the Bot](#how_to_use_the_application)
 + [How does the Bot work?](#how_does_the_bot_work)
 + [Why didn't the Bot notice me?](#why_didnt_the_bot_notice_me)
@@ -97,7 +98,7 @@ Your bot should now be running.
 
 ## Deploying the Bot on Heroku (Platform that allows you to host your bot)<a name="deploying_the_bot"></a>
 Firstly, make an account on [Heroku](https://www.heroku.com/) <br><br>
-Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. In your main directory, create two files: "requirements.txt" and "runtime.txt".<br> The requirements.txt file should contain output of the command "pip freeze > requirements.txt". If you're not using virtualenv, you'll have delete all the lines with packages your code doesn't use.<br> Runtime.txt just specifies which python version for Heroku to use. Mine just has the line "python-3.6.6" in it. <br><br>
+Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. In your main directory, create two files: "requirements.txt" and "runtime.txt".<br> The requirements.txt file should contain output of the command "pip freeze > requirements.txt". If you're not using virtualenv, you'll have delete all the lines with packages your code doesn't use.<br> Runtime.txt just specifies which python version for Heroku to use. Mine just has the line "python-3.6.7" in it. <br><br>
 Now it's time to set up your git repo to use it as a remote.
 ### Installing Git
 ```
@@ -232,12 +233,149 @@ To solve 2), a temporary solution would be to save comments as soon as you reply
 comment.save()
 ```
 This is a temporary solution because Reddit has a max cap of 1000 for the number of comments/posts you can save. <br>
-A better solution would be to use a Database to store all the comment IDs.<br>
+
+A better solution would be to use a Database to store all the comment IDs. For this, you can use one of Heroku's many data storing / caching options. While most of these add-ons are free, they need you to verify yourself - by adding a credit card to your account. <br>
+
+The Heroku Postgres add-on however, does not require you to verify yourself. Heroku Postgres is a reliable and powerful database based on PostgreSQL. We'll be using the Heroku Postgres as the database for our Bot.
+
+## Installing PostgreSQL<a name="installing_postgres"></a>
+### Installing locally<a name="installing_postgres_locally"></a>
+Install Postgres via your package manager. The actual package manager command you use will depend on your distribution. The following will work on Ubuntu, Debian, and other Debian-derived distributions:
+```
+$ sudo apt-get install postgresql
+```
+The psql client will typically be installed in /usr/bin:
+```
+$ which psql
+/usr/bin/psql
+```
+Start the Postgres server:
+```
+$ sudo systemctl start postgresql
+```
+Installing postgres using ```apt-get``` does not create a user role or a database.
+
+To create a superuser role and a database for your personal user account:
+```
+$ sudo -u postgres createuser -s $(whoami)
+```
+Checking if you have correctly installed Postgres:
+```
+$ sudo -u postgres psql
+psql (10.6 (Ubuntu 10.6-1.pgdg16.04+1))
+Type "help" for help.
+
+postgres=# 
+```
+### Using the CLI
+Heroku Postgres is integrated directly into the Heroku CLI and offers many helpful commands that simplify common database tasks.
+
+But, to use it you need to provision Heroku Postgress to your app. This can be done by:
+```
+Log in to Heroku > Heroku dashboard > Choose your app > Resources > Add-ons > Select Heroku Postgres > Click on Provision
+```
+To see all PostgreSQL databases provisioned by your application and the identifying characteristics of each (such as database size, status, number of tables, and PG version), use the ```heroku pg:info``` command:
+```
+$ heroku pg:info
+=== DATABASE_URL
+Plan:                  Hobby-dev
+Status:                Available
+Connections:           2/20
+PG Version:            10.6
+Created:               2018-11-09 17:12 UTC
+Data Size:             7.8 MB
+Tables:                1
+Rows:                  1/10000 (In compliance)
+Fork/Follow:           Unsupported
+Rollback:              Unsupported
+Continuous Protection: Off
+Add-on:                postgresql-clear-32269
+```
+To establish a ```psql``` session with your remote database, use ```heroku pg:psql```.
+
+```psql``` is the ***native PostgreSQL interactive terminal*** and is used to execute queries and issue commands to the connected database.
+
+**Note: You must have PostgreSQL [installed on your system](#installing_postgres_locally) to use ```heroku pg:psql```**.
+```
+$ heroku pg:psql
+--> Connecting to postgresql-clear-32269
+psql (10.6 (Ubuntu 10.6-1.pgdg16.04+1))
+SSL connection (protocol: TLSv1.2, cipher: DHE-RSA-AES256-SHA, bits: 256, compression: off)
+Type "help" for help.
+
+wordbook-bot::DATABASE=> 
+```
+```pg:pull``` can be used to pull remote data from a Heroku Postgres database to a database on your local machine. The command looks like this:
+```
+heroku pg:pull HEROKU_POSTGRESQL_MAGENTA mylocaldb --app sushi
+```
+This command creates a new local database named ```mylocaldb``` and then pulls data from the database at ```DATABASE_URL``` from the app ```sushi```. To prevent accidental data overwrites and loss, the local database *must not already exist*. You will be prompted to drop an already existing local database before proceeding.<br>
+
+If providing a Postgres user or password for your local DB is necessary, use the appropriate environment variables like so:
+```
+$ PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_POSTGRESQL_MAGENTA mylocaldb --app sushi
+```
+**Note: As with all ```pg:*``` commands, you can use shorthand database identifiers here. For example, to pull data from ```HEROKU_POSTGRESQL_RED``` on the app ```sushi```, you could run ```heroku pg:pull sushi::RED mylocaldb```.**
+
+```pg:push``` pushes data from a local database into a remote Heroku Postgres database. The command looks like this:
+```
+$ heroku pg:push mylocaldb HEROKU_POSTGRESQL_MAGENTA --app sushi
+```
+This command takes the local database ```mylocaldb``` and pushes it to the database at ```DATABASE_URL``` on the app ```sushi```. To prevent accidental data overwrites and loss, the remote database must be empty. You will be prompted to ```pg:reset``` a remote database that is not empty.
+
+Usage of the ```PGUSER``` and ```PGPASSWORD``` for your local database is also supported for ```pg:push```, just like for the ```pg:pull``` command.
+
+Heroku Postgres has a lot more Postgres commands, you can have a look at them [here](https://devcenter.heroku.com/articles/heroku-postgresql#provisioning-heroku-postgres).
+
+### Connecting in Python
+To use PostgreSQL as your database in Python applications you will need to use the ```psycopg2``` package.
+```
+$ pip3 install psycopg2-binary
+```
+And use this package to connect to ```DATABASE_URL``` in your code.
+```
+import os
+import psycopg2
+
+DATABASE_URL = os.environ['DATABASE_URL']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+# Creating a cursor (a DB cursor is an abstraction, meant for data set traversal)
+cur = conn.cursor()
+
+# Executing your PostgreSQL query
+cur.execute("SELECT table_name from column_name")
+
+# In order to make the changes to the database permanent, we now commit our changes
+conn.commit()
+
+# We have committed the necessary changes and can now close out our connection
+cur.close()
+conn.close()
+
+```
+#### Connecting with Django (If you are using Django)
+
+Install the ```dj-database-url``` package using ```pip```.
+```
+$ pip3 install dj-database-url
+```
+**Note: Be sure to add ```psycopg2-binary``` and ```dj-database-url``` to your ```requirements.txt``` file as well.**
+
+Then add the following to the bottom of ```settings.py```:
+```
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+```
+This will parse the values of the ```DATABASE_URL``` environment variable and convert them to something Django can understand.
+
+### Running the bot
 
 At this point, your bot is not yet running. You still need to:
 
 ```Log in to Heroku > Heroku dashboard > Choose your app > Resources > Edit > Enable worker > Confirm```<br><br>
-The free version of Heroku gives you 550 hours of dyno usage each month. 
+The free version of Heroku gives you ```550``` hours of dyno usage each month. 
 
 ### Viewing the output
 Everything the bot prints (including stacktraces when it crashes) goes to the Heroku log, which you can view with this command:
@@ -294,14 +432,16 @@ The entire bot is written in Python 3.6
 ## Why didn't the Bot notice me?<a name="why_didnt_the_bot_notice_me"></a>
 + Make sure you are calling the bot correctly. It is:
 
-``!dict word``
+  ``!dict word``
 
-The first part, i.e. "!dict" **is not** case sensitive.
+  The first part, i.e. "!dict" **is not** case sensitive.
 
 + The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible.
++ I might have ran out of dynos for the month. ;__;
 
 ## References<a name="references"></a>:
 https://www.youtube.com/watch?v=krTUf7BpTc0<br>
 https://gist.github.com/hzsweers/8595628<br>
 https://devcenter.heroku.com/articles/git<br>
-http://amertune.blogspot.com/2014/04/tutorial-create-reddit-bot-with-python.html
+http://amertune.blogspot.com/2014/04/tutorial-create-reddit-bot-with-python.html<br>
+https://devcenter.heroku.com/articles/heroku-postgresql<br>
