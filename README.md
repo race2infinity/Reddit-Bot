@@ -98,7 +98,7 @@ Your bot should now be running.
 
 ## Deploying the Bot on Heroku (Platform that allows you to host your bot)<a name="deploying_the_bot"></a>
 Firstly, make an account on [Heroku](https://www.heroku.com/) <br><br>
-Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. In your main directory, create two files: "requirements.txt" and "runtime.txt".<br> The requirements.txt file should contain output of the command "pip freeze > requirements.txt". If you're not using virtualenv, you'll have delete all the lines with packages your code doesn't use.<br> Runtime.txt just specifies which python version for Heroku to use. Mine just has the line "python-3.6.7" in it. <br><br>
+Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. In your main directory, create two files: ```requirements.txt``` and ```runtime.txt```.<br> The ```requirements.txt``` file should contain output of the command ```pip freeze > requirements.txt```. If you're not using ```virtualenv```, you'll have delete all the lines with packages your code doesn't use.<br> ```Runtime.txt``` just specifies which python version for Heroku to use. Mine just has the line "python-3.6.7" in it. <br><br>
 Now it's time to set up your git repo to use it as a remote.
 ### Installing Git
 ```
