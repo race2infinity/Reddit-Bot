@@ -5,6 +5,7 @@ import requests
 import json
 import bot_login
 import psycopg2
+import re
 
 def json_dump_and_parse(file_name, request):
     with open(file_name, "w+") as f:
@@ -57,13 +58,11 @@ def run_bot(r, created_utc, conn):
 
                 if ("!dict" in comment_body.lower() and comment_author != "Wordbook_Bot"):
                     print ("\n\nFound a comment!")
-                    comment_body_list = list(comment_body.split())[1:]
+                    word = re.compile("!dict(.*)$").search(comment_body).group(1)
 
                     app_id = os.environ["app_id"]
                     app_key = os.environ["app_key"]
                     language = "en"
-
-                    word = " ".join(str(i) for i in comment_body_list)
 
                     oxford_url = "https://od-api.oxforddictionaries.com/api/v1/entries/" + language + "/" + word.replace(" ", "_").lower()
                     request = requests.get(oxford_url, headers = {"app_id": app_id, "app_key": app_key})
