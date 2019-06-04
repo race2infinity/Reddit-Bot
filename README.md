@@ -14,6 +14,7 @@ In this repo, I have made a Dictionary Bot which gives the meaning of particular
 + [How to use the Bot](#how_to_use_the_application)
 + [How does the Bot work?](#how_does_the_bot_work)
 + [Why didn't the Bot notice me?](#why_didnt_the_bot_notice_me)
++ [Contributing](#contributing)
 + [References](#references)
 
 ## Why was Wordbook Bot made?<a name="why_was_wordbook_bot_made"></a>
@@ -436,12 +437,19 @@ The entire bot is written in Python 3.6
 
   The first part, i.e. "!dict" **is not** case sensitive.
 
-+ The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible.
-+ I might have ran out of dynos for the month. ;__;
++ The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible
++ I might have ran out of dynos for the month ;__;
 
-## References<a name="references"></a>:
-https://www.youtube.com/watch?v=krTUf7BpTc0<br>
-https://gist.github.com/hzsweers/8595628<br>
-https://devcenter.heroku.com/articles/git<br>
-http://amertune.blogspot.com/2014/04/tutorial-create-reddit-bot-with-python.html<br>
-https://devcenter.heroku.com/articles/heroku-postgresql<br>
+## Contributing<a name = "contributing"></a>
+1. Fork it (<https://github.com/kylelobo/Reddit-Bot/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
+## References<a name = "references"></a>
+1. https://www.youtube.com/watch?v=krTUf7BpTc0
+2. https://gist.github.com/hzsweers/8595628
+3. https://devcenter.heroku.com/articles/git
+4. http://amertune.blogspot.com/2014/04/tutorial-create-reddit-bot-with-python.html
+5. https://devcenter.heroku.com/articles/heroku-postgresql
