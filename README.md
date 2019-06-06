@@ -4,6 +4,7 @@ This repo teaches you how to:
 
 + Make a Reddit Bot using the [PRAW](https://praw.readthedocs.io/en/latest/) (The Python Reddit API Wrapper) Python package
 + Deploy your Reddit Bot on [Heroku](https://www.heroku.com/) - A platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud
++ Install & use [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql)
 
 In this repo, I have made a Wordbook Bot which gives the meaning of particular word / phrase in the English / Slang language.
 
@@ -33,7 +34,7 @@ In this repo, I have made a Wordbook Bot which gives the meaning of particular w
 + [Contributing](/.github/CONTRIBUTING.md)
 + [Acknowledgements](#acknowledgements)
 
-## Why was Wordbook Bot made? <a name="why_was_wordbook_bot_made"></a>
+## 🎈 Why was Wordbook Bot made? <a name="why_was_wordbook_bot_made"></a>
 Wordbook Bot was made to help Redditors:
 + Quickly look up the meaning of an English / Slang word you see
 + Find the right meaning of an English / Slang word
@@ -440,7 +441,7 @@ However, this displays only about 100 lines. In order to view the logs in real t
 heroku logs -t
 ```
 
-## How to use the Bot <a name="how_to_use_the_application"></a>
+## 💭 How to use the Bot <a name="how_to_use_the_application"></a>
 To use the bot, type:
 ```
 !dict word
@@ -472,13 +473,13 @@ Dude1: dafuq?
 
 <sup>Want to make a similar reddit bot? Check out: [GitHub](https://github.com/kylelobo/Reddit-Bot)</sup>
 
-## How does the Bot work? <a name="how_does_the_bot_work"></a>
+## 😯 How does the Bot work? <a name="how_does_the_bot_work"></a>
 + The bot first extracts the word from the comment and then fetches word definitions, part of speech, example and source from the Oxford Dictionary API.
 + If the word does not exist in the Oxford Dictionary, the Oxford API then returns a 404 response upon which the bot then tries to fetch results form the Urban Dictionary API.
 + The bot uses the Pushshift API to fetch comments, PRAW module to reply to comments and Heroku as a server.
 + The entire bot is written in Python 3.6
 
-## Why didn't the Bot notice me? <a name="why_didnt_the_bot_notice_me"></a>
+## ☹️ Why didn't the Bot notice me? <a name="why_didnt_the_bot_notice_me"></a>
 + Make sure you are calling the bot correctly. It is:
 
   ``!dict word``
@@ -488,7 +489,7 @@ Dude1: dafuq?
 + The bot may be down due to maintenance. But, I'll try to keep the down-time as low as possible
 + I might have ran out of dynos for the month ;__;
 
-## Acknowledgements <a name = "acknowledgements"></a>
+## 🎉 Acknowledgements <a name = "acknowledgements"></a>
 1. [How To Make A reddit Bot](https://www.youtube.com/watch?v=krTUf7BpTc0) - _busterroni11_
 2. [A crash course in setting up your Python Reddit bot on Heroku](https://gist.github.com/ZacSweers/8595628) - _ZacSweers_
 3. [Deploying with Git](https://devcenter.heroku.com/articles/git) - _Heroku_
