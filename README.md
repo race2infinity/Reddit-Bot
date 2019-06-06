@@ -9,7 +9,7 @@ In this repo, I have made a Wordbook Bot which gives the meaning of particular w
 
 ---
 
-# 📝 Index
+## 📝 Index
 + [Why was Wordbook Bot made?](#why_was_wordbook_bot_made)
 + [Installation](#installation)
 + [Deploying the Bot on Heroku (Platform that allows you to host your Bot)](#deploying_the_bot)
