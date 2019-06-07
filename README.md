@@ -13,7 +13,7 @@ In this repo, I have made a Wordbook Bot which gives the meaning of particular w
 ## 📝 Index
 + [Why was Wordbook Bot made?](#why_was_wordbook_bot_made)
 + [Installation](#installation)
-+ [Deploying the Bot on Heroku (Platform that allows you to host your Bot)](#deploying_the_bot)
++ [Deploying the Bot on Heroku (Platform that allows you to host your Bot)](#deploying_the_bot_on_heroku)
   + [Installing Git](#installing_git)
   + [Installing Heroku CLI](#installing_heroku_cli)
   + [Getting Started](#getting_started)
@@ -115,7 +115,7 @@ $ python3 wordbook_bot.py
 
 Your bot should now be running.
 
-## 🚀 Deploying the Bot on Heroku (Platform that allows you to host your bot) <a name="deploying_the_bot"></a>
+## 🚀 Deploying the Bot on Heroku (Platform that allows you to host your bot) <a name="deploying_the_bot_on_heroku"></a>
 1. Firstly, make an account on [Heroku](https://www.heroku.com/).
 2. Make another directory and put all your python code in that, and make an empty file called ```__init__.py``` in it. 3. In your main directory, create two files: ```requirements.txt``` and ```runtime.txt```.
 4. The ```requirements.txt``` file should contain output of the command ```pip freeze > requirements.txt```. If you're not using ```virtualenv```, you'll have delete all the lines with packages your code doesn't use.
