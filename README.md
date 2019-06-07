@@ -6,6 +6,8 @@ This repo teaches you how to:
 + Deploy your Reddit Bot on [Heroku](https://www.heroku.com/) - A platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud
 + Install & use [Heroku Postgres](https://devcenter.heroku.com/articles/heroku-postgresql)
 
+[![Tweet](https://img.shields.io/twitter/url/https/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Making%20a%20Reddit%20Bot%20using%20Python%20and%20Heroku&url=https://github.com/kylelobo/Reddit-Bott)
+
 In this repo, I have made a Wordbook Bot which gives the meaning of particular word / phrase in the English / Slang language.
 
 ---
