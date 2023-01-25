@@ -12,4 +12,4 @@ def bot_login():
         print ("Logged in!")
     except:
         print ("Failed to log in!")
-    return r
+    return
